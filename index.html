@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with Steller landing page.">
-    <meta name="author" content="Devcrud">
+    <!-- <meta name="description" content="Start your development with Steller landing page.">
+    <meta name="author" content="Devcrud"> -->
     <title>Portfolio of Wiviart</title>
     <!-- font icons -->
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
@@ -53,6 +53,13 @@
             color: #fff;
             font-size: 20px;
         }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            z-index: 999;
+            width: 50px;
+            height: 500px;
+        }
     </style>
 </head>
 
@@ -82,7 +89,7 @@
         } else if (currentMedia.includes('youtube.com/watch') || currentMedia.includes('youtu.be/')) {
             // If it's a YouTube URL
             var videoId = getYouTubeVideoId(currentMedia);
-            container.innerHTML = '<iframe width="700" height="400" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>';
+            container.innerHTML = '<iframe width="700" height="450" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>';
         } else {
             // If it's an image
             container.innerHTML = '<img src="' + currentMedia + '" alt="Preview Media" style="max-width: 700px; max-height: 700px;">';
@@ -154,7 +161,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#portfolio">Portfolio</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#testmonial">Testmonial</a>
                     </li>
                     <li class="nav-item">
@@ -162,9 +169,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
-                        <a class="- btn btn-primary rounded ml-4" href="components.html">Components</a>
+                        <a class="- btn btn-primary rounded ml-4"
+                            href="https://drive.google.com/file/d/19lQP6Pmc8sTIgD_-a9x-QaVdEp7VZPot/view?usp=sharing">Get
+                            My CV</a>
                     </li>
                 </ul>
             </div>
@@ -192,7 +201,7 @@
                             class="ti-google"></i></a>
                     <a class="social-item" href="https://github.com/Wiviart" target="_blank"><i
                             class="ti-github"></i></a>
-                    <a class="social-item" href="javascript:void(0)" target="_blank"><i class="ti-twitter"></i></a>
+                    <!-- <a class="social-item" href="javascript:void(0)" target="_blank"><i class="ti-twitter"></i></a> -->
                     <a class="social-item" href="https://www.linkedin.com/in/dungpham-unity/" target="_blank"><i
                             class="ti-linkedin"></i></a>
                     <a class="social-item" href="https://wiviart.itch.io/" target="_blank"><i
@@ -233,31 +242,35 @@
                     <h6 class="subtitle">About</h6>
                     <h6 class="title">Phạm Hữu Dũng</h6>
                     <p class="subtitle"><b>Game Developer</b></p>
-                    <p>As a person who is gifted and passionate about technology, I chose to pursue game development
-                        with Unity. Besides learning specialized knowledge from school, I always proactively improve my
+                    <p>As a computer enthusiast with a passion for technology, I have chosen to pursue game development
+                        with Unity. In addition to acquiring specialized knowledge from school, I proactively enhance my
                         skills and knowledge in this field. </p>
-                    <p>With logical thinking and self-study spirit, I have the ability to build, complete, and fix bugs
-                        during game development.</p>
-                    <button class="btn btn-primary rounded mt-3">DOWNLOAD CV</button>
+                    <p>Leveraging logical thinking, research skills, and the self-study spirit cultivated during my work
+                        in the legal field, I possess the ability to independently develop games and troubleshoot game
+                        bugs.</p>
+                    <a href="https://drive.google.com/file/d/19lQP6Pmc8sTIgD_-a9x-QaVdEp7VZPot/view?usp=sharing"
+                        target="_blank">
+                        <button class="btn btn-primary rounded mt-3">DOWNLOAD CV</button>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Service section -->
-    <section id="service" class="section">
+    <!-- <section id="service" class="section">
         <div class="container text-center">
             <h6 class="subtitle">Service</h6>
             <h6 class="section-title mb-4">What I Do</h6>
-            <!-- <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br>
-                rerum commodi corrupti, temporibus non quam.</p> -->
+            <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br>
+                rerum commodi corrupti, temporibus non quam.</p>
 
             <div class="row">
                 <div class="col-sm-6 col-md-3 mb-4">
                     <div class="custom-card card border">
                         <div class="card-body">
-                            <i class="icon ti-crown"></i>
-                            <h5>Game Developing</h5>
+                            <i class="fa-brands fa-unity"></i>
+                            <h5>Unity Developing</h5>
                         </div>
                     </div>
                 </div>
@@ -265,7 +278,7 @@
                     <div class="custom-card card border">
                         <div class="card-body">
                             <i class="icon ti-desktop"></i>
-                            <h5>Web Design</h5>
+                            <h5>C# .Net</h5>
                         </div>
                     </div>
                 </div>
@@ -273,7 +286,7 @@
                     <div class="custom-card card border">
                         <div class="card-body">
                             <i class="icon ti-mobile"></i>
-                            <h5>App Design</h5>
+                            <h5>Game</h5>
                         </div>
                     </div>
                 </div>
@@ -281,13 +294,13 @@
                     <div class="custom-card card border">
                         <div class="card-body">
                             <i class="icon ti-bar-chart"></i>
-                            <h5>Legal</h5>
+                            <h5>Internal Regulations</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End of Sectoin -->
 
     <!-- Skills section -->
@@ -330,12 +343,10 @@
                             <p style="margin-bottom: 0px;">Word, Excel</p>
                             <p style="margin: 0px;">Photoshop</p>
                             <p style="margin: 0px;">Linux</p>
-
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- <div class="row text-left">
                 <div class="col-sm-6">
                     <h6 class="mb-3">Unity</h6>
@@ -375,92 +386,161 @@
         <div class="container text-center">
             <h6 class="subtitle">Portfolio</h6>
             <h6 class="section-title mb-4">Check Out My Projects</h6>
-            <p class="mb-5 pb-4">Those are my individual projects I have made and continue to improve.</p>
+            <p class="mb-5 pb-4">These are my individual projects I have made and continue to improve.</p>
 
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="img-wrapper">
-                        <img id="thumbnail" src="assets/imgs/folio-1.jpg" alt="Thumbnail">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"
-                                    onclick="openMediaPreview(['assets/imgs/folio-1.jpg', 'assets/imgs/folio-2.jpg', 'assets/imgs/folio-3.jpg', 'assets/imgs/video (2160p).mp4','www.youtube.com/watch?v=wY0G8YHAOhY'])">
-                                    <i class="ti-zoom-in"></i>
-                                </a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
+            <div id="projectCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Project 1 -->
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail"
+                                        src="https://img.itch.zone/aW1nLzE0MzcyOTMwLnBuZw==/315x250%23c/Szx6uJ.png"
+                                        alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>QUINTESSENCE Illuminating Shadow</h5>
+                                            <a href="javascript:void(0)"
+                                                onclick="openMediaPreview(['www.youtube.com/watch?v=DBgWSdlX6AM'])">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io/quintessence-illuminating-shadow"
+                                                target="_blank"><i class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail"
+                                        src="https://img.itch.zone/aW1nLzEyMzUzNjM5LnBuZw==/315x250%23c/9jm0sA.png"
+                                        alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>SLIME Another World Adventure</h5>
+                                            <a onclick="openMediaPreview(
+                                                    [
+                                                        'www.youtube.com/watch?v=P1zNONMMOVk',
+                                                        'assets/imgs/folio-21.png',
+                                                        'assets/imgs/folio-22.png',
+                                                        'assets/imgs/folio-23.png',
+                                                        'assets/imgs/folio-24.png',
+                                                        'assets/imgs/folio-25.png'
+                                                    ])">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io/slime-another-world-adventure"
+                                                target="_blank"><i class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail"
+                                        src="https://img.itch.zone/aW1nLzEyNTI0MzM4LnBuZw==/315x250%23c/sKxyRi.png"
+                                        alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>Lines98</h5>
+                                            <a href="javascript:void(0)"
+                                                onclick="openMediaPreview([''])">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io/line-98" target="_blank"><i
+                                                    class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div id="preview">
-                            <span id="close-btn" onclick="closePreview()">&times;</span>
-                            <div id="media-container"></div>
-                            <button id="prevBtn" onclick="prevMedia()">Previous</button>
-                            <button id="nextBtn" onclick="nextMedia()">Next</button>
-                        </div>
                     </div>
-                    <div class="img-wrapper">
-                        <img src="assets/imgs/folio-2.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
+
+                    <!-- Project 2 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail"
+                                        src="https://img.itch.zone/aW1nLzEyNTI0MzU5LnBuZw==/315x250%23c/TnqZcN.png"
+                                        width="800px" alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>Minesweeper</h5>
+                                            <a href="javascript:void(0)"
+                                                onclick="openMediaPreview([''])">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io/minesweeper" target="_blank"><i
+                                                    class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail"
+                                        src="https://img.itch.zone/aW1nLzEzMzcyMTQ2LnBuZw==/315x250%23c/O49HmW.png"
+                                        alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>2048</h5>
+                                            <a href="javascript:void(0)"
+                                                onclick="openMediaPreview([''])">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io/2048" target="_blank"><i
+                                                    class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail"
+                                        src="https://img.itch.zone/aW1nLzEyNTMzODkwLnBuZw==/315x250%23c/R%2FcRUJ.png"
+                                        alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>Others</h5>
+                                            <a href="javascript:void(0)"
+                                                onclick="openMediaPreview(['youtu.be/6fH0Z3Dktgc'])">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io/flappy-bird" target="_blank"><i
+                                                    class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Add more carousel items as needed -->
                 </div>
-                <div class="col-sm-4">
-                    <div class="img-wrapper">
-                        <img src="assets/imgs/folio-3.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="img-wrapper">
-                        <img src="assets/imgs/folio-4.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="img-wrapper">
-                        <img src="assets/imgs/folio-5.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="img-wrapper">
-                        <img src="assets/imgs/folio-6.jpg" alt="">
-                        <div class="overlay">
-                            <div class="overlay-infos">
-                                <h5>Project Title</h5>
-                                <a href="javascript:void(0)"><i class="ti-zoom-in"></i></a>
-                                <a href="javascript:void(0)"><i class="ti-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                <a class="carousel-control-prev" href="#projectCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#projectCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-
+        </div>
+        <div id="preview">
+            <button id="prevBtn" class="carousel-control-prev-icon" onclick="prevMedia()"></button>
+            <span id="close-btn" onclick="closePreview()">&times;</span>
+            <div id="media-container"></div>
+            <button id="nextBtn" class="carousel-control-next-icon" onclick="nextMedia()"></button>
         </div>
     </section>
     <!-- End of portfolio section -->
 
     <!-- Testmonial Section -->
-    <section id="testmonial" class="section">
+    <!-- <section id="testmonial" class="section">
         <div class="container text-center">
             <h6 class="subtitle">Testmonial</h6>
             <h6 class="section-title mb-4">What People Say About Me</h6>
@@ -511,11 +591,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End of testmonial section -->
 
     <!-- Blog Section -->
-    <section id="blog" class="section">
+    <!-- <section id="blog" class="section">
         <div class="container text-center">
             <h6 class="subtitle">My Blogs</h6>
             <h6 class="section-title mb-4">Latest News</h6>
@@ -573,10 +653,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Hire me section -->
-    <section class="bg-gray p-0 section">
+    <!-- <section class="bg-gray p-0 section">
         <div class="container">
             <div class="card bg-primary">
                 <div class="card-body text-light">
@@ -592,7 +672,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End od Hire me section. -->
 
     <!-- Contact Section -->
@@ -666,10 +746,17 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="socials">
-                        <a class="social-item" href="javascript:void(0)"><i class="ti-facebook"></i></a>
-                        <a class="social-item" href="javascript:void(0)"><i class="ti-google"></i></a>
-                        <a class="social-item" href="javascript:void(0)"><i class="ti-github"></i></a>
-                        <a class="social-item" href="javascript:void(0)"><i class="ti-twitter"></i></a>
+                        <a class="social-item" href="https://www.facebook.com/Wisiviart/" target="_blank"><i
+                                class="ti-facebook"></i></a>
+                        <a class="social-item" href="mailto:wisiviart@gmail.com" target="_blank"><i
+                                class="ti-google"></i></a>
+                        <a class="social-item" href="https://github.com/Wiviart" target="_blank"><i
+                                class="ti-github"></i></a>
+                        <!-- <a class="social-item" href="javascript:void(0)" target="_blank"><i class="ti-twitter"></i></a> -->
+                        <a class="social-item" href="https://www.linkedin.com/in/dungpham-unity/" target="_blank"><i
+                                class="ti-linkedin"></i></a>
+                        <a class="social-item" href="https://wiviart.itch.io/" target="_blank"><i
+                                class="fab fa-itch-io"></i></a>
                     </div>
                 </div>
             </div>
