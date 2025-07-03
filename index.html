@@ -48,6 +48,16 @@
       margin-bottom: 20px;
     }
 
+    .card-img-top {
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      /* hoặc thử 'cover' nếu bạn muốn ảnh phủ toàn bộ khung */
+      background: #fff;
+      padding: 10px;
+    }
+
+
     .slider-btn {
       background-color: rgba(255, 255, 255, 0.8);
       border: 2px solid #666;
@@ -97,7 +107,7 @@
   <!-- Header -->
   <header class="bg-light text-center py-5 mt-5">
     <div class="container">
-      <img src="assets/imgs/avatar2.png" alt="Avatar" class="rounded-circle mb-3" width="120">
+      <img src="assets/imgs/avatar.png" alt="Avatar" class="rounded-circle mb-3" width="120">
       <h1 class="fw-bold">Pham Huu Dung</h1>
       <p class="lead">A <strong>Game Developer</strong> from Vietnam</p>
       <div class="d-flex justify-content-center gap-3 mt-3">
@@ -116,7 +126,7 @@
   <section id="about" class="container py-5">
     <div class="row">
       <div class="col-md-3 text-center">
-        <img src="assets/imgs/avatar.png" alt="Profile" class="img-thumbnail">
+        <img src="assets/imgs/avatar2.png" alt="Profile" class="img-thumbnail">
       </div>
       <div class="col-md-9">
         <h2>About</h2>
@@ -171,7 +181,7 @@
             </div>
           </div>
 
-          <div class="card project-card" style="min-width: 300px;">
+          <!-- <div class="card project-card" style="min-width: 300px;">
             <img src="https://img.itch.zone/aW1nLzEyNTI0MzM4LnBuZw==/315x250%23c/sKxyRi.png" class="card-img-top"
               alt="Project 3">
             <div class="card-body">
@@ -199,7 +209,7 @@
               <a href="https://wiviart.itch.io/line-98" target="_blank" class="btn btn-sm btn-outline-primary">View
                 Project</a>
             </div>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -241,7 +251,8 @@
           style="overflow-x: auto; scroll-behavior: smooth; transition: transform 0.5s ease;">
 
           <div class="card h-100" style="min-width: 300px;">
-            <img src="assets/imgs/blogs/git-thumbnail.jpg" class="card-img-top" alt="Git Cheat Sheet">
+            <img src="https://images.seeklogo.com/logo-png/33/2/git-logo-png_seeklogo-336916.png" class="card-img-top"
+              alt="Git Cheat Sheet">
             <div class="card-body">
               <h5 class="card-title">Git Cheat Sheet</h5>
               <p class="card-text">Tóm tắt các lệnh Git cơ bản và mẹo sử dụng hiệu quả.</p>
@@ -250,7 +261,8 @@
           </div>
 
           <div class="card h-100" style="min-width: 300px;">
-            <img src="assets/imgs/blogs/git-thumbnail.jpg" class="card-img-top" alt="Git Cheat Sheet">
+            <img src="https://1000logos.net/wp-content/uploads/2021/11/Docker-Logo-2013.png" class="card-img-top"
+              alt="Docker Commands">
             <div class="card-body">
               <h5 class="card-title">Docker Commands</h5>
               <p class="card-text">Tổng hợp các lệnh Docker phổ biến và cách sử dụng.</p>
@@ -259,6 +271,17 @@
           </div>
 
           <div class="card h-100" style="min-width: 300px;">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_C_sharp.svg/910px-Logo_C_sharp.svg.png"
+              class="card-img-top" alt="C# Syntax Notes">
+            <div class="card-body">
+              <h5 class="card-title">C# Syntax Notes</h5>
+              <p class="card-text">Ghi chú cú pháp, các đoạn mã thường dùng trong C#.</p>
+              <a href="blogs/git/csharp.html" target="_blank" class="btn btn-outline-primary">Read More</a>
+            </div>
+          </div>
+
+          <!-- <div class="card h-100" style="min-width: 300px;">
             <img src="assets/imgs/blogs/git-thumbnail.jpg" class="card-img-top" alt="Git Cheat Sheet">
             <div class="card-body">
               <h5 class="card-title">C# Syntax Notes</h5>
@@ -274,16 +297,7 @@
               <p class="card-text">Ghi chú cú pháp, các đoạn mã thường dùng trong C#.</p>
               <a href="blogs/git/csharp.html" target="_blank" class="btn btn-outline-primary">Read More</a>
             </div>
-          </div>
-
-          <div class="card h-100" style="min-width: 300px;">
-            <img src="assets/imgs/blogs/git-thumbnail.jpg" class="card-img-top" alt="Git Cheat Sheet">
-            <div class="card-body">
-              <h5 class="card-title">C# Syntax Notes</h5>
-              <p class="card-text">Ghi chú cú pháp, các đoạn mã thường dùng trong C#.</p>
-              <a href="blogs/git/csharp.html" target="_blank" class="btn btn-outline-primary">Read More</a>
-            </div>
-          </div>
+          </div> -->
 
         </div>
       </div>
