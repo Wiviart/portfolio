@@ -1,0 +1,2382 @@
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Language - C#</title>
+	<style>
+		/* cspell:disable-file */
+		/* webkit printing magic: print all background colors */
+		html {
+			-webkit-print-color-adjust: exact;
+		}
+
+		* {
+			box-sizing: border-box;
+			-webkit-print-color-adjust: exact;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		@media only screen {
+			body {
+				margin: 2em auto;
+				max-width: 900px;
+				color: rgb(55, 53, 47);
+			}
+		}
+
+		body {
+			line-height: 1.5;
+			white-space: pre-wrap;
+		}
+
+		a,
+		a.visited {
+			color: inherit;
+			text-decoration: underline;
+		}
+
+		.pdf-relative-link-path {
+			font-size: 80%;
+			color: #444;
+		}
+
+		h1,
+		h2,
+		h3 {
+			letter-spacing: -0.01em;
+			line-height: 1.2;
+			font-weight: 600;
+			margin-bottom: 0;
+		}
+
+		.page-title {
+			font-size: 2.5rem;
+			font-weight: 700;
+			margin-top: 0;
+			margin-bottom: 0.75em;
+		}
+
+		h1 {
+			font-size: 1.875rem;
+			margin-top: 1.875rem;
+		}
+
+		h2 {
+			font-size: 1.5rem;
+			margin-top: 1.5rem;
+		}
+
+		h3 {
+			font-size: 1.25rem;
+			margin-top: 1.25rem;
+		}
+
+		.source {
+			border: 1px solid #ddd;
+			border-radius: 3px;
+			padding: 1.5em;
+			word-break: break-all;
+		}
+
+		.callout {
+			border-radius: 3px;
+			padding: 1rem;
+		}
+
+		figure {
+			margin: 1.25em 0;
+			page-break-inside: avoid;
+		}
+
+		figcaption {
+			opacity: 0.5;
+			font-size: 85%;
+			margin-top: 0.5em;
+		}
+
+		mark {
+			background-color: transparent;
+		}
+
+		.indented {
+			padding-left: 1.5em;
+		}
+
+		hr {
+			background: transparent;
+			display: block;
+			width: 100%;
+			height: 1px;
+			visibility: visible;
+			border: none;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		@media only print {
+			img {
+				max-height: 100vh;
+				object-fit: contain;
+			}
+		}
+
+		@page {
+			margin: 1in;
+		}
+
+		.collection-content {
+			font-size: 0.875rem;
+		}
+
+		.column-list {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.column {
+			padding: 0 1em;
+		}
+
+		.column:first-child {
+			padding-left: 0;
+		}
+
+		.column:last-child {
+			padding-right: 0;
+		}
+
+		.table_of_contents-item {
+			display: block;
+			font-size: 0.875rem;
+			line-height: 1.3;
+			padding: 0.125rem;
+		}
+
+		.table_of_contents-indent-1 {
+			margin-left: 1.5rem;
+		}
+
+		.table_of_contents-indent-2 {
+			margin-left: 3rem;
+		}
+
+		.table_of_contents-indent-3 {
+			margin-left: 4.5rem;
+		}
+
+		.table_of_contents-link {
+			text-decoration: none;
+			opacity: 0.7;
+			border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid rgba(55, 53, 47, 0.09);
+			border-collapse: collapse;
+		}
+
+		table {
+			border-left: none;
+			border-right: none;
+		}
+
+		th,
+		td {
+			font-weight: normal;
+			padding: 0.25em 0.5em;
+			line-height: 1.5;
+			min-height: 1.5em;
+			text-align: left;
+		}
+
+		th {
+			color: rgba(55, 53, 47, 0.6);
+		}
+
+		ol,
+		ul {
+			margin: 0;
+			margin-block-start: 0.6em;
+			margin-block-end: 0.6em;
+		}
+
+		li>ol:first-child,
+		li>ul:first-child {
+			margin-block-start: 0.6em;
+		}
+
+		ul>li {
+			list-style: disc;
+		}
+
+		ul.to-do-list {
+			padding-inline-start: 0;
+		}
+
+		ul.to-do-list>li {
+			list-style: none;
+		}
+
+		.to-do-children-checked {
+			text-decoration: line-through;
+			opacity: 0.375;
+		}
+
+		ul.toggle>li {
+			list-style: none;
+		}
+
+		ul {
+			padding-inline-start: 1.7em;
+		}
+
+		ul>li {
+			padding-left: 0.1em;
+		}
+
+		ol {
+			padding-inline-start: 1.6em;
+		}
+
+		ol>li {
+			padding-left: 0.2em;
+		}
+
+		.mono ol {
+			padding-inline-start: 2em;
+		}
+
+		.mono ol>li {
+			text-indent: -0.4em;
+		}
+
+		.toggle {
+			padding-inline-start: 0em;
+			list-style-type: none;
+		}
+
+		/* Indent toggle children */
+		.toggle>li>details {
+			padding-left: 1.7em;
+		}
+
+		.toggle>li>details>summary {
+			margin-left: -1.1em;
+		}
+
+		.selected-value {
+			display: inline-block;
+			padding: 0 0.5em;
+			background: rgba(206, 205, 202, 0.5);
+			border-radius: 3px;
+			margin-right: 0.5em;
+			margin-top: 0.3em;
+			margin-bottom: 0.3em;
+			white-space: nowrap;
+		}
+
+		.collection-title {
+			display: inline-block;
+			margin-right: 1em;
+		}
+
+		.page-description {
+			margin-bottom: 2em;
+		}
+
+		.simple-table {
+			margin-top: 1em;
+			font-size: 0.875rem;
+			empty-cells: show;
+		}
+
+		.simple-table td {
+			height: 29px;
+			min-width: 120px;
+		}
+
+		.simple-table th {
+			height: 29px;
+			min-width: 120px;
+		}
+
+		.simple-table-header-color {
+			background: rgb(247, 246, 243);
+			color: black;
+		}
+
+		.simple-table-header {
+			font-weight: 500;
+		}
+
+		time {
+			opacity: 0.5;
+		}
+
+		.icon {
+			display: inline-block;
+			max-width: 1.2em;
+			max-height: 1.2em;
+			text-decoration: none;
+			vertical-align: text-bottom;
+			margin-right: 0.5em;
+		}
+
+		img.icon {
+			border-radius: 3px;
+		}
+
+		.user-icon {
+			width: 1.5em;
+			height: 1.5em;
+			border-radius: 100%;
+			margin-right: 0.5rem;
+		}
+
+		.user-icon-inner {
+			font-size: 0.8em;
+		}
+
+		.text-icon {
+			border: 1px solid #000;
+			text-align: center;
+		}
+
+		.page-cover-image {
+			display: block;
+			object-fit: cover;
+			width: 100%;
+			max-height: 30vh;
+		}
+
+		.page-header-icon {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.page-header-icon-with-cover {
+			margin-top: -0.72em;
+			margin-left: 0.07em;
+		}
+
+		.page-header-icon img {
+			border-radius: 3px;
+		}
+
+		.link-to-page {
+			margin: 1em 0;
+			padding: 0;
+			border: none;
+			font-weight: 500;
+		}
+
+		p>.user {
+			opacity: 0.5;
+		}
+
+		td>.user,
+		td>time {
+			white-space: nowrap;
+		}
+
+		input[type="checkbox"] {
+			transform: scale(1.5);
+			margin-right: 0.6em;
+			vertical-align: middle;
+		}
+
+		p {
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+		}
+
+		.image {
+			border: none;
+			margin: 1.5em 0;
+			padding: 0;
+			border-radius: 0;
+			text-align: center;
+		}
+
+		.code,
+		code {
+			background: rgba(135, 131, 120, 0.15);
+			border-radius: 3px;
+			padding: 0.2em 0.4em;
+			border-radius: 3px;
+			font-size: 85%;
+			tab-size: 2;
+		}
+
+		code {
+			color: #eb5757;
+		}
+
+		.code {
+			padding: 1.5em 1em;
+		}
+
+		.code-wrap {
+			white-space: pre-wrap;
+			word-break: break-all;
+		}
+
+		.code>code {
+			background: none;
+			padding: 0;
+			font-size: 100%;
+			color: inherit;
+		}
+
+		blockquote {
+			font-size: 1.25em;
+			margin: 1em 0;
+			padding-left: 1em;
+			border-left: 3px solid rgb(55, 53, 47);
+		}
+
+		.bookmark {
+			text-decoration: none;
+			max-height: 8em;
+			padding: 0;
+			display: flex;
+			width: 100%;
+			align-items: stretch;
+		}
+
+		.bookmark-title {
+			font-size: 0.85em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			height: 1.75em;
+			white-space: nowrap;
+		}
+
+		.bookmark-text {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.bookmark-info {
+			flex: 4 1 180px;
+			padding: 12px 14px 14px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.bookmark-image {
+			width: 33%;
+			flex: 1 1 180px;
+			display: block;
+			position: relative;
+			object-fit: cover;
+			border-radius: 1px;
+		}
+
+		.bookmark-description {
+			color: rgba(55, 53, 47, 0.6);
+			font-size: 0.75em;
+			overflow: hidden;
+			max-height: 4.5em;
+			word-break: break-word;
+		}
+
+		.bookmark-href {
+			font-size: 0.75em;
+			margin-top: 0.25em;
+		}
+
+		.sans {
+			font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+		}
+
+		.code {
+			font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+		}
+
+		.serif {
+			font-family: Lyon-Text, Georgia, ui-serif, serif;
+		}
+
+		.mono {
+			font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+		}
+
+		.pdf .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .sans {
+			font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR';
+		}
+
+		.pdf .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .code {
+			font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+		}
+
+		.pdf .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .serif {
+			font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR';
+		}
+
+		.pdf .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+		}
+
+		.pdf:lang(zh-CN) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+		}
+
+		.pdf:lang(zh-TW) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+		}
+
+		.pdf:lang(ko-KR) .mono {
+			font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+		}
+
+		.highlight-default {
+			color: rgba(55, 53, 47, 1);
+		}
+
+		.highlight-gray {
+			color: rgba(120, 119, 116, 1);
+			fill: rgba(120, 119, 116, 1);
+		}
+
+		.highlight-brown {
+			color: rgba(159, 107, 83, 1);
+			fill: rgba(159, 107, 83, 1);
+		}
+
+		.highlight-orange {
+			color: rgba(217, 115, 13, 1);
+			fill: rgba(217, 115, 13, 1);
+		}
+
+		.highlight-yellow {
+			color: rgba(203, 145, 47, 1);
+			fill: rgba(203, 145, 47, 1);
+		}
+
+		.highlight-teal {
+			color: rgba(68, 131, 97, 1);
+			fill: rgba(68, 131, 97, 1);
+		}
+
+		.highlight-blue {
+			color: rgba(51, 126, 169, 1);
+			fill: rgba(51, 126, 169, 1);
+		}
+
+		.highlight-purple {
+			color: rgba(144, 101, 176, 1);
+			fill: rgba(144, 101, 176, 1);
+		}
+
+		.highlight-pink {
+			color: rgba(193, 76, 138, 1);
+			fill: rgba(193, 76, 138, 1);
+		}
+
+		.highlight-red {
+			color: rgba(212, 76, 71, 1);
+			fill: rgba(212, 76, 71, 1);
+		}
+
+		.highlight-gray_background {
+			background: rgba(241, 241, 239, 1);
+		}
+
+		.highlight-brown_background {
+			background: rgba(244, 238, 238, 1);
+		}
+
+		.highlight-orange_background {
+			background: rgba(251, 236, 221, 1);
+		}
+
+		.highlight-yellow_background {
+			background: rgba(251, 243, 219, 1);
+		}
+
+		.highlight-teal_background {
+			background: rgba(237, 243, 236, 1);
+		}
+
+		.highlight-blue_background {
+			background: rgba(231, 243, 248, 1);
+		}
+
+		.highlight-purple_background {
+			background: rgba(244, 240, 247, 0.8);
+		}
+
+		.highlight-pink_background {
+			background: rgba(249, 238, 243, 0.8);
+		}
+
+		.highlight-red_background {
+			background: rgba(253, 235, 236, 1);
+		}
+
+		.block-color-default {
+			color: inherit;
+			fill: inherit;
+		}
+
+		.block-color-gray {
+			color: rgba(120, 119, 116, 1);
+			fill: rgba(120, 119, 116, 1);
+		}
+
+		.block-color-brown {
+			color: rgba(159, 107, 83, 1);
+			fill: rgba(159, 107, 83, 1);
+		}
+
+		.block-color-orange {
+			color: rgba(217, 115, 13, 1);
+			fill: rgba(217, 115, 13, 1);
+		}
+
+		.block-color-yellow {
+			color: rgba(203, 145, 47, 1);
+			fill: rgba(203, 145, 47, 1);
+		}
+
+		.block-color-teal {
+			color: rgba(68, 131, 97, 1);
+			fill: rgba(68, 131, 97, 1);
+		}
+
+		.block-color-blue {
+			color: rgba(51, 126, 169, 1);
+			fill: rgba(51, 126, 169, 1);
+		}
+
+		.block-color-purple {
+			color: rgba(144, 101, 176, 1);
+			fill: rgba(144, 101, 176, 1);
+		}
+
+		.block-color-pink {
+			color: rgba(193, 76, 138, 1);
+			fill: rgba(193, 76, 138, 1);
+		}
+
+		.block-color-red {
+			color: rgba(212, 76, 71, 1);
+			fill: rgba(212, 76, 71, 1);
+		}
+
+		.block-color-gray_background {
+			background: rgba(241, 241, 239, 1);
+		}
+
+		.block-color-brown_background {
+			background: rgba(244, 238, 238, 1);
+		}
+
+		.block-color-orange_background {
+			background: rgba(251, 236, 221, 1);
+		}
+
+		.block-color-yellow_background {
+			background: rgba(251, 243, 219, 1);
+		}
+
+		.block-color-teal_background {
+			background: rgba(237, 243, 236, 1);
+		}
+
+		.block-color-blue_background {
+			background: rgba(231, 243, 248, 1);
+		}
+
+		.block-color-purple_background {
+			background: rgba(244, 240, 247, 0.8);
+		}
+
+		.block-color-pink_background {
+			background: rgba(249, 238, 243, 0.8);
+		}
+
+		.block-color-red_background {
+			background: rgba(253, 235, 236, 1);
+		}
+
+		.select-value-color-uiBlue {
+			background-color: rgba(35, 131, 226, .07);
+		}
+
+		.select-value-color-pink {
+			background-color: rgba(245, 224, 233, 1);
+		}
+
+		.select-value-color-purple {
+			background-color: rgba(232, 222, 238, 1);
+		}
+
+		.select-value-color-green {
+			background-color: rgba(219, 237, 219, 1);
+		}
+
+		.select-value-color-gray {
+			background-color: rgba(227, 226, 224, 1);
+		}
+
+		.select-value-color-translucentGray {
+			background-color: rgba(255, 255, 255, 0.0375);
+		}
+
+		.select-value-color-orange {
+			background-color: rgba(250, 222, 201, 1);
+		}
+
+		.select-value-color-brown {
+			background-color: rgba(238, 224, 218, 1);
+		}
+
+		.select-value-color-red {
+			background-color: rgba(255, 226, 221, 1);
+		}
+
+		.select-value-color-yellow {
+			background-color: rgba(253, 236, 200, 1);
+		}
+
+		.select-value-color-blue {
+			background-color: rgba(211, 229, 239, 1);
+		}
+
+		.select-value-color-pageGlass {
+			background-color: undefined;
+		}
+
+		.select-value-color-washGlass {
+			background-color: undefined;
+		}
+
+		.checkbox {
+			display: inline-flex;
+			vertical-align: text-bottom;
+			width: 16;
+			height: 16;
+			background-size: 16px;
+			margin-left: 2px;
+			margin-right: 5px;
+		}
+
+		.checkbox-on {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+
+		.checkbox-off {
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+		}
+	</style>
+</head>
+
+<body>
+	<article id="1066eba9-0a1a-48f7-8a0c-cffed28e3b83" class="page sans">
+		<header>
+			<div class="page-header-icon undefined"><img class="icon"
+					src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.H4sZFpEeHVnZoOFhfTACAgAAAA%26pid%3DApi&amp;f=1&amp;ipt=b5e98a6068f3086a6d5c0cbce139d162549363f2bf5610b33f78c95948bb5efb&amp;ipo=images" />
+			</div>
+			<h1 class="page-title">Language - C#</h1>
+			<p class="page-description"></p>
+		</header>
+		<div class="page-body">
+			<ul id="9c28b1d8-0c93-4fa5-98cb-3c941deeaf56" class="toggle">
+				<li>
+					<details open="">
+						<summary>First Thing First</summary>
+						<p id="d9c23b00-495c-4e04-b304-358f2747d446" class="">Create a new project</p>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+							integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+							crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+						<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+							integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+							crossorigin="anonymous" referrerPolicy="no-referrer" />
+						<pre id="ccd95a2f-f75d-4342-9fff-4d9e6550902f" class="code"><code class="language-PowerShell">dotnet new console
+dotnet run</code></pre>
+					</details>
+				</li>
+			</ul>
+			<ul id="23542ac2-b6e7-47e6-8089-2eca3e1be288" class="toggle">
+				<li>
+					<details open="">
+						<summary><strong><strong>The Four Pillars of OOP</strong></strong></summary>
+						<ul id="f3418796-f6e2-4024-850e-c2ebe93ab7af" class="bulleted-list">
+							<li style="list-style-type:disc">Abstraction<ul id="b1bd8169-8b33-406c-8ccb-9592fa01dd5b"
+									class="toggle">
+									<li>
+										<details open="">
+											<summary>Interface and Abstract class</summary>
+											<div id="6871711d-f03e-4265-8322-f20eca7f4aed" class="column-list">
+												<div id="375a357f-16ff-4fac-90bd-dcf96b9e7e73" style="width:100%"
+													class="column">
+													<script
+														src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+														integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+														crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+													<link rel="stylesheet"
+														href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+														integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+														crossorigin="anonymous" referrerPolicy="no-referrer" />
+													<pre id="0915bb71-7969-4d32-aa88-4f34e1680439" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">interface IAnimal
+{
+    void MakeSound();
+    int Legs { get; set; } // Useless
+}
+
+class Dog : IAnimal
+{
+    public void MakeSound()
+    {
+        Console.WriteLine(&quot;Woof!&quot;);
+    }
+
+    public int Legs { get; set; }
+}</code></pre>
+												</div>
+												<div id="1fed4003-3811-4279-9a1b-fb6b233a442d" style="width:100%"
+													class="column">
+													<script
+														src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+														integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+														crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+													<link rel="stylesheet"
+														href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+														integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+														crossorigin="anonymous" referrerPolicy="no-referrer" />
+													<pre id="8852e1b5-6999-4097-b689-4de6a458bb56" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">abstract class Animal
+{
+    public abstract void MakeSound(); // Abstract the method
+
+    public void Move()
+    {
+        Console.WriteLine(&quot;The animal moves&quot;);
+    }
+}
+
+class Dog : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine(&quot;Woof!&quot;);
+    }
+}</code></pre>
+												</div>
+											</div>
+										</details>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<ul id="8ade9b24-42dc-42fb-8efd-02dbf33c1743" class="bulleted-list">
+							<li style="list-style-type:disc">Inheritance</li>
+						</ul>
+						<ul id="5998429c-3538-4247-887a-00bac960731f" class="bulleted-list">
+							<li style="list-style-type:disc">Polymorphism</li>
+						</ul>
+						<ul id="3f75d535-7852-4711-88be-b6bacad12c16" class="bulleted-list">
+							<li style="list-style-type:disc">Encapsulation<p id="d8c2d3d8-ba9b-4bea-911c-428df83ec094"
+									class="">
+								</p>
+							</li>
+						</ul>
+					</details>
+				</li>
+			</ul>
+			<ul id="7a84e6ee-36a2-4038-ac71-5b5359ece73a" class="toggle">
+				<li>
+					<details open="">
+						<summary><strong>Operators</strong></summary>
+						<table id="51638e15-daf4-4ec3-9bac-b59c80bad0f7" class="simple-table">
+							<tbody>
+								<tr id="154c065c-32f6-46f2-8fa7-4c389a0e716a">
+									<td id="=XE;" class="" style="width:167px">Operator</td>
+									<td id="&lt;\xT" class="" style="width:167px">Name</td>
+									<td id="mHgf" class="" style="width:167px">Description</td>
+									<td id="T]Me" class="" style="width:167px">Example</td>
+								</tr>
+								<tr id="d6d4d099-53f3-4036-9b19-500cd00b0af6">
+									<td id="=XE;" class="" style="width:167px">+</td>
+									<td id="&lt;\xT" class="" style="width:167px">Addition</td>
+									<td id="mHgf" class="" style="width:167px">Adds together two values</td>
+									<td id="T]Me" class="" style="width:167px">x + y</td>
+								</tr>
+								<tr id="8cfa8060-28ae-421e-b19b-7bda8e2e972c">
+									<td id="=XE;" class="" style="width:167px">-</td>
+									<td id="&lt;\xT" class="" style="width:167px">Subtraction</td>
+									<td id="mHgf" class="" style="width:167px">Subtracts one value from another</td>
+									<td id="T]Me" class="" style="width:167px">x - y</td>
+								</tr>
+								<tr id="c02b21fa-8317-403e-963f-e1452814a4da">
+									<td id="=XE;" class="" style="width:167px">*</td>
+									<td id="&lt;\xT" class="" style="width:167px">Multiplication</td>
+									<td id="mHgf" class="" style="width:167px">Multiplies two values</td>
+									<td id="T]Me" class="" style="width:167px">x * y</td>
+								</tr>
+								<tr id="1281a8f7-03f8-4aa2-b3a0-903d009e7a4f">
+									<td id="=XE;" class="" style="width:167px">/</td>
+									<td id="&lt;\xT" class="" style="width:167px">Division</td>
+									<td id="mHgf" class="" style="width:167px">Divides one value by another</td>
+									<td id="T]Me" class="" style="width:167px">x / y</td>
+								</tr>
+								<tr id="36360521-6f8b-42f1-9540-613abf1b5e69">
+									<td id="=XE;" class="" style="width:167px">%</td>
+									<td id="&lt;\xT" class="" style="width:167px">Modulus</td>
+									<td id="mHgf" class="" style="width:167px">Returns the division remainder</td>
+									<td id="T]Me" class="" style="width:167px">x % y</td>
+								</tr>
+								<tr id="43930f3c-6c57-4a20-b552-2d048f071d31">
+									<td id="=XE;" class="" style="width:167px">++</td>
+									<td id="&lt;\xT" class="" style="width:167px">Increment</td>
+									<td id="mHgf" class="" style="width:167px">Increases the value of a variable by 1
+									</td>
+									<td id="T]Me" class="" style="width:167px">x++</td>
+								</tr>
+								<tr id="a7027a1a-6a14-4a4a-8c15-e11f7e9bf3f2">
+									<td id="=XE;" class="" style="width:167px">--</td>
+									<td id="&lt;\xT" class="" style="width:167px">Decrement</td>
+									<td id="mHgf" class="" style="width:167px">Decreases the value of a variable by 1
+									</td>
+									<td id="T]Me" class="" style="width:167px">x--</td>
+								</tr>
+							</tbody>
+						</table>
+						<ul id="fabb2c0c-46ff-40a2-b729-26b54d9bc11f" class="toggle">
+							<li>
+								<details open="">
+									<summary><strong>Assignment Operators</strong></summary>
+									<table id="298056c5-ed5b-440b-ab83-980632041ad5" class="simple-table">
+										<tbody>
+											<tr id="e74d529a-7633-4d50-a1ae-a7c381a13d6c">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">Operator</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">Example</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">Same As</td>
+											</tr>
+											<tr id="0b485ca7-f80c-47d0-ac17-360d45337c74">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">=</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">x = 5</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">x = 5</td>
+											</tr>
+											<tr id="75482c9f-5032-4dc7-9daa-3d3d5c4a0ae0">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">+=</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">x += 3</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">x = x + 3</td>
+											</tr>
+											<tr id="1cd94891-cd37-41cf-beaf-544498868c94">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">-=</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">x -= 3</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">x = x - 3</td>
+											</tr>
+											<tr id="b007a2e2-2c56-4e09-bfdc-ad32d2103db7">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">*=</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">x *= 3</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">x = x * 3</td>
+											</tr>
+											<tr id="57b54d73-7167-442d-97e7-f82057ca0089">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">/=</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">x /= 3</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">x = x / 3</td>
+											</tr>
+											<tr id="177fa544-6795-491e-a274-c774ae7fc1f3">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">%=</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">x %= 3</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">x = x % 3</td>
+											</tr>
+											<tr id="c0a9e2dd-ca18-4dda-a7f3-1247650c33a9">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">&amp;=</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">x &amp;= 3
+												</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">x = x &amp; 3
+												</td>
+											</tr>
+											<tr id="44548da4-6076-466c-99e2-aa9082328587">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">|=</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">x |= 3</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">x = x | 3</td>
+											</tr>
+											<tr id="ecd5691a-f4f1-492e-a1f5-95c15fc457a6">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">^=</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">x ^= 3</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">x = x ^ 3</td>
+											</tr>
+											<tr id="05069fc4-6267-4463-8ba4-5c476523ca9b">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">&gt;&gt;=</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">x &gt;&gt;= 3
+												</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">x = x &gt;&gt;
+													3</td>
+											</tr>
+											<tr id="80d197c6-dcea-4524-983e-e544598d5c6b">
+												<td id="Gc:t" class="" style="width:222.66250610351562px">&lt;&lt;=</td>
+												<td id="CtuC" class="" style="width:222.66666666666666px">x &lt;&lt;= 3
+												</td>
+												<td id="pl[;" class="" style="width:222.66666666666666px">x = x &lt;&lt;
+													3</td>
+											</tr>
+										</tbody>
+									</table>
+								</details>
+							</li>
+						</ul>
+						<ul id="e3c5a6c7-b4af-401b-b6d1-e99fe2f52fdc" class="toggle">
+							<li>
+								<details open="">
+									<summary><strong>Comparison Operators</strong></summary>
+									<table id="0c7d654f-1588-4b11-9fe0-25d6a02e9034" class="simple-table">
+										<tbody>
+											<tr id="ad813408-1bbf-4eb9-98e5-1ca249bbf712">
+												<td id="R}xl" class="" style="width:213.33333333333334px">Operator</td>
+												<td id="Misc" class="" style="width:213.33333333333334px">Name</td>
+												<td id="qbA{" class="" style="width:213.33333333333334px">Example</td>
+											</tr>
+											<tr id="43943e4b-745d-4329-b326-b59fa4906dd5">
+												<td id="R}xl" class="" style="width:213.33333333333334px">==</td>
+												<td id="Misc" class="" style="width:213.33333333333334px">Equal to</td>
+												<td id="qbA{" class="" style="width:213.33333333333334px">x == y</td>
+											</tr>
+											<tr id="fec3dd5b-363d-45a7-9b28-ccb3463203bb">
+												<td id="R}xl" class="" style="width:213.33333333333334px">!=</td>
+												<td id="Misc" class="" style="width:213.33333333333334px">Not equal</td>
+												<td id="qbA{" class="" style="width:213.33333333333334px">x != y</td>
+											</tr>
+											<tr id="18d6c5a9-2c8a-4e11-9fc4-eae42ddbfa86">
+												<td id="R}xl" class="" style="width:213.33333333333334px">&gt;</td>
+												<td id="Misc" class="" style="width:213.33333333333334px">Greater than
+												</td>
+												<td id="qbA{" class="" style="width:213.33333333333334px">x &gt; y</td>
+											</tr>
+											<tr id="76a002d9-bd03-413d-8607-aafacfeb892c">
+												<td id="R}xl" class="" style="width:213.33333333333334px">&lt;</td>
+												<td id="Misc" class="" style="width:213.33333333333334px">Less than</td>
+												<td id="qbA{" class="" style="width:213.33333333333334px">x &lt; y</td>
+											</tr>
+											<tr id="2634ae20-0806-4ed0-9317-a4f2e1ff5270">
+												<td id="R}xl" class="" style="width:213.33333333333334px">&gt;=</td>
+												<td id="Misc" class="" style="width:213.33333333333334px">Greater than
+													or equal to</td>
+												<td id="qbA{" class="" style="width:213.33333333333334px">x &gt;= y</td>
+											</tr>
+											<tr id="25b71a20-a390-4550-8d0f-a9f5ea416357">
+												<td id="R}xl" class="" style="width:213.33333333333334px">&lt;=</td>
+												<td id="Misc" class="" style="width:213.33333333333334px">Less than or
+													equal to</td>
+												<td id="qbA{" class="" style="width:213.33333333333334px">x &lt;= y</td>
+											</tr>
+										</tbody>
+									</table>
+								</details>
+							</li>
+						</ul>
+						<ul id="6a2c12ee-cc8d-4aac-b975-be4558b40c11" class="toggle">
+							<li>
+								<details open="">
+									<summary><strong>Logical Operators</strong></summary>
+									<table id="c1acfe82-7768-44f5-a3a1-eb4c72f7e422" class="simple-table">
+										<tbody>
+											<tr id="e93c90d9-6e66-4807-a54a-415906715a16">
+												<td id="mDA_" class="" style="width:167px">Operator</td>
+												<td id="G=F]" class="" style="width:167px">Name</td>
+												<td id="QjpB" class="" style="width:167px">Description</td>
+												<td id="y|VB" class="" style="width:167px">Example</td>
+											</tr>
+											<tr id="cc9a0a08-2548-4ab3-adba-8cb2641cd82b">
+												<td id="mDA_" class="" style="width:167px">&amp;&amp;</td>
+												<td id="G=F]" class="" style="width:167px">Logical and</td>
+												<td id="QjpB" class="" style="width:167px">Returns True if both
+													statements are true</td>
+												<td id="y|VB" class="" style="width:167px">x &lt; 5 &amp;&amp;  x &lt;
+													10</td>
+											</tr>
+											<tr id="59b233af-b152-4c5b-9276-9f3481562100">
+												<td id="mDA_" class="" style="width:167px">||</td>
+												<td id="G=F]" class="" style="width:167px">Logical or</td>
+												<td id="QjpB" class="" style="width:167px">Returns True if one of the
+													statements is true</td>
+												<td id="y|VB" class="" style="width:167px">x &lt; 5 || x &lt; 4</td>
+											</tr>
+											<tr id="74a4ec3f-50e3-4971-ae16-193f37f52ad1">
+												<td id="mDA_" class="" style="width:167px">!</td>
+												<td id="G=F]" class="" style="width:167px">Logical not</td>
+												<td id="QjpB" class="" style="width:167px">Reverse the result, returns
+													False if the result is true</td>
+												<td id="y|VB" class="" style="width:167px">!(x &lt; 5 &amp;&amp; x &lt;
+													10)</td>
+											</tr>
+										</tbody>
+									</table>
+								</details>
+							</li>
+						</ul>
+					</details>
+				</li>
+			</ul>
+			<ul id="79506346-70df-482a-bd44-1b9db9ff084b" class="toggle">
+				<li>
+					<details open="">
+						<summary><strong>Special Characters</strong></summary>
+						<table id="5bd0dbb0-a96f-4fa1-9b39-12bb7d4b69e8" class="simple-table">
+							<tbody>
+								<tr id="c1b39c10-d98b-4f2d-aca3-09a6d2acda0d">
+									<td id="mO&lt;L" class="" style="width:222.66666666666666px">Escape character</td>
+									<td id="?NfL" class="" style="width:222.66666666666666px">Result</td>
+									<td id="O&lt;ru" class="" style="width:222.66666666666666px">Description</td>
+								</tr>
+								<tr id="97b105bb-b22d-4669-9c30-2d14169c45fb">
+									<td id="mO&lt;L" class="" style="width:222.66666666666666px">\&#x27;</td>
+									<td id="?NfL" class="" style="width:222.66666666666666px">&#x27;</td>
+									<td id="O&lt;ru" class="" style="width:222.66666666666666px">Single quote</td>
+								</tr>
+								<tr id="4e8eacaa-c502-482d-af05-68b1d88c8de4">
+									<td id="mO&lt;L" class="" style="width:222.66666666666666px">\&quot;</td>
+									<td id="?NfL" class="" style="width:222.66666666666666px">&quot;</td>
+									<td id="O&lt;ru" class="" style="width:222.66666666666666px">Double quote</td>
+								</tr>
+								<tr id="83eaa90b-0b7c-46b3-8022-4c79cef95fb2">
+									<td id="mO&lt;L" class="" style="width:222.66666666666666px">\\</td>
+									<td id="?NfL" class="" style="width:222.66666666666666px">\</td>
+									<td id="O&lt;ru" class="" style="width:222.66666666666666px">Backslash</td>
+								</tr>
+								<tr id="6c4ea0b2-618e-4043-98b6-13906118032b">
+									<td id="mO&lt;L" class="" style="width:222.66666666666666px">\n</td>
+									<td id="?NfL" class="" style="width:222.66666666666666px">New Line</td>
+									<td id="O&lt;ru" class="" style="width:222.66666666666666px"></td>
+								</tr>
+								<tr id="c75f5e2d-9c6f-4527-8b1a-17126c4848f5">
+									<td id="mO&lt;L" class="" style="width:222.66666666666666px">\t</td>
+									<td id="?NfL" class="" style="width:222.66666666666666px">Tab</td>
+									<td id="O&lt;ru" class="" style="width:222.66666666666666px"></td>
+								</tr>
+								<tr id="fd897e67-7418-41e7-9f20-192bd896a82c">
+									<td id="mO&lt;L" class="" style="width:222.66666666666666px">\b</td>
+									<td id="?NfL" class="" style="width:222.66666666666666px">Backspace</td>
+									<td id="O&lt;ru" class="" style="width:222.66666666666666px"></td>
+								</tr>
+							</tbody>
+						</table>
+					</details>
+				</li>
+			</ul>
+			<ul id="f688a31f-a453-4252-9dc4-e576330d7661" class="toggle">
+				<li>
+					<details open="">
+						<summary>Class</summary>
+						<ul id="b701d7c8-18d5-46d9-91c0-c70b8afd9c83" class="toggle">
+							<li>
+								<details open="">
+									<summary>Access Modifiers</summary>
+									<table id="57c21874-59a9-4acd-bebc-6d17f99a2fca" class="simple-table">
+										<tbody>
+											<tr id="5c849cfc-5767-4445-9e28-9d92be556150">
+												<td id="zwrH" class="" style="width:633px">Modifier</td>
+												<td id="?cbN" class="" style="width:633px">Description</td>
+											</tr>
+											<tr id="9e5763bd-173b-448a-90d1-e75efb594c19">
+												<td id="zwrH" class="" style="width:633px"><code>public</code></td>
+												<td id="?cbN" class="" style="width:633px">The code is accessible for
+													all classes</td>
+											</tr>
+											<tr id="e04791d9-cda4-4a84-aef5-f72749585dab">
+												<td id="zwrH" class="" style="width:633px"><code>private</code></td>
+												<td id="?cbN" class="" style="width:633px">The code is only accessible
+													within the same class</td>
+											</tr>
+											<tr id="f70665bb-3fcd-49e8-bdeb-e0df3b84d910">
+												<td id="zwrH" class="" style="width:633px"><code>protected</code></td>
+												<td id="?cbN" class="" style="width:633px">The code is accessible within
+													the same class, or in a class that is inherited from that class.
+												</td>
+											</tr>
+											<tr id="df72ce30-0f47-4602-a9c3-5de55490f083">
+												<td id="zwrH" class="" style="width:633px"><code>internal</code></td>
+												<td id="?cbN" class="" style="width:633px">The code is only accessible
+													within its own assembly, but not from another assembly.</td>
+											</tr>
+										</tbody>
+									</table>
+								</details>
+							</li>
+						</ul>
+						<ul id="8d40d662-6c55-4632-866c-89a7c85e3db9" class="toggle">
+							<li>
+								<details open="">
+									<summary>Get and Set</summary>
+									<h1 id="b232dff8-4059-47d9-9545-0d5edc6b8f2b" class="">Properties and Encapsulation
+									</h1>
+									<p id="ffb5550e-43cf-4902-8111-5252f45c7aa3" class="">Before we start to explain
+										properties, you should have a basic understanding of
+										&quot;<strong>Encapsulation</strong>&quot;.</p>
+									<p id="5f0a16e9-6b94-432a-8512-c21ebd60fbaa" class="">The meaning
+										of <strong>Encapsulation</strong>, is to make sure that &quot;sensitive&quot;
+										data is hidden from users. To achieve this, you must:</p>
+									<ul id="57d3aeab-5957-4383-b127-07e7439352e9" class="bulleted-list">
+										<li style="list-style-type:disc">declare fields/variables
+											as <code>private</code></li>
+									</ul>
+									<ul id="ee66d5cc-2df9-4bc4-8cda-d6205eae9bf0" class="bulleted-list">
+										<li style="list-style-type:disc">
+											provide <code>public</code> <code>get</code> and <code>set</code> methods,
+											through <strong>properties</strong>, to access and update the value of
+											a <code>private</code> field</li>
+									</ul>
+									<hr id="fedd2800-13ed-4dab-9123-78968bc85e50" />
+									<h1 id="22d8259e-d2ca-459c-a01b-f7ad69d667cc" class="">Properties</h1>
+									<p id="935802cf-7b9b-48c8-8fd4-c2cdc7d4409a" class="">You learned from the previous
+										chapter that <code>private</code> variables can only be accessed within the same
+										class (an outside class has no access to it). However, sometimes we need to
+										access them - and it can be done with properties.</p>
+									<p id="03c95b6b-0cb4-49ae-8271-2b3059c58061" class="">A property is like a
+										combination of a variable and a method, and it has two methods:
+										a <code>get</code> and a <code>set</code> method:</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="5b20e3b9-06be-4ab4-8d4f-f9b4030411e6" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">class Person
+{
+  private string name; // field
+
+  public string Name   // property
+  {
+    get { return name; }   // get method
+    set { name = value; }  // set method
+  }
+}</code></pre>
+									<h3 id="9600ae40-21f4-4e9a-8d2a-61d671e3eb27" class="">Example explained</h3>
+									<p id="7ba00e67-6b61-4a2c-ba31-3bbc44fcac59" class="">The <code>Name</code> property
+										is associated with the <code>name</code> field. It is a good practice to use the
+										same name for both the property and the private field, but with an uppercase
+										first letter.</p>
+									<p id="fcfd82fc-4c5c-41e8-825c-4f16dffce561" class="">The <code>get</code> method
+										returns the value of the variable <code>name</code>.</p>
+									<p id="c39f9946-819b-4d90-9711-a6e0cd88e94c" class="">The <code>set</code> method
+										assigns a <code>value</code> to the <code>name</code> variable.
+										The <code>value</code> keyword represents the value we assign to the property.
+									</p>
+									<p id="1e039a6c-88ce-47d5-951a-3186d31e60b9" class="">If you don&#x27;t fully
+										understand it, take a look at the example below.</p>
+									<p id="1e0e72f0-00e3-40e2-9443-c182309e1406" class="">Now we can use
+										the <code>Name</code> property to access and update
+										the <code>private</code> field of the <code>Person</code> class:</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="027f1035-ef14-431c-986f-81cd125142ba" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">class Person
+{
+  private string name; // field
+  public string Name   // property
+  {
+    get { return name; }
+    set { name = value; }
+  }
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Person myObj = new Person();
+    myObj.Name = &quot;Liam&quot;;
+    Console.WriteLine(myObj.Name);
+  }
+}
+
+// The output will be:
+// Liam</code></pre>
+									<h1 id="bf0767f4-9065-492e-8e2b-70ed4e3045de" class="">Automatic Properties (Short
+										Hand)</h1>
+									<p id="940565e5-6d93-4480-9678-694c91fc76fd" class="">C# also provides a way to use
+										short-hand / automatic properties, where you do not have to define the field for
+										the property, and you only have to
+										write <code>get;</code> and <code>set;</code> inside the property.</p>
+									<p id="9b33d0a4-7552-49b3-85c5-54c085480194" class="">The following example will
+										produce the same result as the example above. The only difference is that there
+										is less code:</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="e0d97036-0945-429c-8c65-e9a00578da57" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">class Person
+{
+  public string Name  // property
+  { get; set; }
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Person myObj = new Person();
+    myObj.Name = &quot;Liam&quot;;
+    Console.WriteLine(myObj.Name);
+  }
+}
+
+// The output will be:
+// Liam</code></pre>
+									<figure class="block-color-blue_background callout"
+										style="white-space:pre-wrap;display:flex"
+										id="b6b25cf8-4282-4301-9c97-2491df3a3b8f">
+										<div style="font-size:1.5em"><span class="icon">💡</span></div>
+										<div style="width:100%">Why Encapsulation?<ul
+												id="4c3b623a-7d88-45f8-b8bb-27a46889d960" class="bulleted-list">
+												<li style="list-style-type:disc">Better control of class members (reduce
+													the possibility of yourself (or others) to mess up the code)</li>
+											</ul>
+											<ul id="ef41ab4d-d9da-4a4a-a52c-6d4b6a811967" class="bulleted-list">
+												<li style="list-style-type:disc">Fields can be
+													made <strong>read-only</strong> (if you only use
+													the <code>get</code> method), or <strong>write-only</strong> (if you
+													only use the <code>set</code> method)</li>
+											</ul>
+											<ul id="db79eb01-5cce-4540-b7ab-c68580c98de2" class="bulleted-list">
+												<li style="list-style-type:disc">Flexible: the programmer can change one
+													part of the code without affecting other parts</li>
+											</ul>
+											<ul id="3328b9e5-3421-4ffb-a30b-d5779c0d6210" class="bulleted-list">
+												<li style="list-style-type:disc">Increased security of data</li>
+											</ul>
+										</div>
+									</figure>
+								</details>
+							</li>
+						</ul>
+						<ul id="0e6f28b1-9ceb-4d1f-9d97-3a780303f563" class="toggle">
+							<li>
+								<details open="">
+									<summary>Inheritance</summary>
+									<h1 id="ff4f7e0a-a130-4604-b40c-1894f74d76d3" class="">Inheritance (Derived and Base
+										Class)</h1>
+									<table id="d432d931-6b1f-4d5f-9c09-eec235b86cc3" class="simple-table">
+										<tbody>
+											<tr id="c36c1bfd-1c82-4052-9ff6-d2079d724d8d">
+												<td id="kyih" class="">Child class</td>
+												<td id="@GeF" class="">Parent class</td>
+											</tr>
+											<tr id="0face4fa-d1d8-4397-95c9-f89c51d87980">
+												<td id="kyih" class="">Extended class</td>
+												<td id="@GeF" class="">Base class</td>
+											</tr>
+											<tr id="6de32f69-9542-49aa-a105-c88fb3c3a542">
+												<td id="kyih" class="">Subclass</td>
+												<td id="@GeF" class="">Super class</td>
+											</tr>
+										</tbody>
+									</table>
+									<ul id="c5883183-11dd-42ee-ad10-bc357cc19f97" class="toggle">
+										<li>
+											<details open="">
+												<summary><em><strong>Override: Virtual and Abtract</strong></em>
+												</summary>
+												<div id="7317ef06-21d7-41b1-ad2c-98b6a38682a4" class="column-list">
+													<div id="ef432ec3-2275-4f1f-ac17-c853681a8c4a" style="width:100%"
+														class="column">
+														<script
+															src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+															integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+															crossorigin="anonymous"
+															referrerPolicy="no-referrer"></script>
+														<link rel="stylesheet"
+															href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+															integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+															crossorigin="anonymous" referrerPolicy="no-referrer" />
+														<pre id="7bb613ad-4db6-4e82-932a-fbb5b8ef6d17" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">// Virtual - Override
+public class Animal
+{
+		// Method has implementation in the base class, but will be implemented in all derived classes.
+    public virtual void MakeSound()
+    {
+        Console.WriteLine(&quot;The animal makes a sound&quot;);
+    }
+}
+
+public class Dog : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine(&quot;The dog barks&quot;);
+    }
+}</code></pre>
+													</div>
+													<div id="e0f693f1-ab7f-4a10-97a4-9e5ea504b4d4" style="width:100%"
+														class="column">
+														<script
+															src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+															integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+															crossorigin="anonymous"
+															referrerPolicy="no-referrer"></script>
+														<link rel="stylesheet"
+															href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+															integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+															crossorigin="anonymous" referrerPolicy="no-referrer" />
+														<pre id="07579be7-7bbd-45e1-853e-8a0a743ed378" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">// Abstract - Override
+public abstract class Animal
+{
+		// Method has no implementation in the base class, but must be implemented in all derived classes.
+    public abstract void MakeSound(); 
+}
+
+public class Dog : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine(&quot;The dog barks&quot;);
+    }
+}</code></pre>
+													</div>
+												</div>
+											</details>
+										</li>
+									</ul>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="c0e0e4a0-42c4-4c55-ac1d-9f38c8f6514f" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">class Vehicle{}
+class Car extends Vehicle{}</code></pre>
+									<p id="f7232aa7-955b-402b-b162-4532258aea8a" class="">In C#, it is possible to
+										inherit fields and methods from one class to another. We group the
+										&quot;inheritance concept&quot; into two categories:</p>
+									<ul id="10c4df56-8efd-4029-a45a-4871973569d1" class="bulleted-list">
+										<li style="list-style-type:disc"><strong>Derived Class</strong> (child) - the
+											class that inherits from another class</li>
+									</ul>
+									<ul id="19cb8fcd-74bf-487d-8022-49d9c4158c32" class="bulleted-list">
+										<li style="list-style-type:disc"><strong>Base Class</strong> (parent) - the
+											class being inherited from</li>
+									</ul>
+									<p id="a209c2e6-d831-4358-80a1-ad9318484791" class="">To inherit from a class, use
+										the <code>:</code> symbol.</p>
+									<p id="3ae880e7-0493-4a67-a523-bbaec55e16ad" class="">In the example below,
+										the <code>Car</code> class (child) inherits the fields and methods from
+										the <code>Vehicle</code> class (parent):</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="b933f681-1f18-41ac-a025-0fc760b11718" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">class Vehicle  // base class (parent)
+{
+  public string brand = &quot;Ford&quot;;  // Vehicle field
+  public void honk()             // Vehicle method
+  {
+    Console.WriteLine(&quot;Tuut, tuut!&quot;);
+  }
+}
+
+class Car : Vehicle  // derived class (child)
+{
+  public string modelName = &quot;Mustang&quot;;  // Car field
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    // Create a myCar object
+    Car myCar = new Car();
+
+    // Call the honk() method (From the Vehicle class) on the myCar object
+    myCar.honk();
+
+    // Display the value of the brand field (from the Vehicle class) and the value of the modelName from the Car class
+    Console.WriteLine(myCar.brand + &quot; &quot; + myCar.modelName);
+  }
+}</code></pre>
+									<figure class="block-color-blue_background callout"
+										style="white-space:pre-wrap;display:flex"
+										id="e4276f55-fef1-497b-9e62-ad298aa63340">
+										<div style="font-size:1.5em"><span class="icon">💡</span></div>
+										<div style="width:100%">Why And When To Use &quot;Inheritance&quot;?<ul
+												id="8ff1e00d-cc11-4f1f-9044-c92f02596850" class="bulleted-list">
+												<li style="list-style-type:disc">It is useful for code reusability:
+													reuse fields and methods of an existing class when you create a new
+													class.</li>
+											</ul>
+											<p id="6c61ea44-c60d-49e8-ae66-1d8409cc3182" class="">
+												<strong>Tip:</strong> Also take a look at the next chapter, <a
+													href="https://www.w3schools.com/cs/cs_polymorphism.php">Polymorphism</a>,
+												which uses inherited methods to perform different tasks.</p>
+										</div>
+									</figure>
+									<h1 id="5e3d10b2-2b72-4bf6-aee3-3bea41f52770" class="">The sealed Keyword</h1>
+									<p id="1854cca4-0254-426b-9b80-a1849a7a73c1" class="">If you don&#x27;t want other
+										classes to inherit from a class, use the <code>sealed</code> keyword:</p>
+									<p id="ad73d492-6f96-4b41-abc9-6eb8760ae1cc" class="">If you try to access
+										a <code>sealed</code> class, C# will generate an error:</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="26742b45-81cb-4d01-91eb-b512570dc317" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">sealed class Vehicle
+{
+  ...
+}
+
+class Car : Vehicle
+{
+  ...
+}
+
+// The error message will be something like this:
+// &#x27;Car&#x27;: cannot derive from sealed type &#x27;Vehicle&#x27;</code></pre>
+								</details>
+							</li>
+						</ul>
+						<ul id="e9be9acf-d571-4e95-bb0d-c573346d297d" class="toggle">
+							<li>
+								<details open="">
+									<summary>Polymorphism</summary>
+									<h1 id="73019cfe-4d6e-4c3f-8a0d-4b766101de40" class="">Polymorphism and Overriding
+										Methods</h1>
+									<p id="3b006e4e-d361-4312-9c1e-740637741122" class="">Polymorphism means &quot;many
+										forms&quot;, and it occurs when we have many classes that are related to each
+										other by inheritance.</p>
+									<p id="f4b7fe41-1e66-4c6e-8153-83679353c716" class="">Like we specified in the
+										previous chapter; <a
+											href="https://www.w3schools.com/cs/cs_inheritance.php"><strong>Inheritance</strong></a> lets
+										us inherit fields and methods from another
+										class. <strong>Polymorphism</strong> uses those methods to perform different
+										tasks. This allows us to perform a single action in different ways.</p>
+									<p id="6c784208-22c5-4ede-94b0-4421ff2f59b8" class="">For example, think of a base
+										class called <code>Animal</code> that has a method
+										called <code>animalSound()</code>. Derived classes of Animals could be Pigs,
+										Cats, Dogs, Birds - And they also have their own implementation of an animal
+										sound (the pig oinks, and the cat meows, etc.):</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="e9197238-9b4f-4399-ab7c-95ba3987651c" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">class Animal  // Base class (parent) 
+{
+  public void animalSound() 
+  {
+    Console.WriteLine(&quot;The animal makes a sound&quot;);
+  }
+}
+
+class Pig : Animal  // Derived class (child) 
+{
+  public void animalSound() 
+  {
+    Console.WriteLine(&quot;The pig says: wee wee&quot;);
+  }
+}
+
+class Dog : Animal  // Derived class (child) 
+{
+  public void animalSound() 
+  {
+    Console.WriteLine(&quot;The dog says: bow wow&quot;);
+  }
+}</code></pre>
+									<p id="3a87da7e-c059-4630-8c13-a5196ba16e57" class="">Remember from the <a
+											href="https://www.w3schools.com/cs/cs_inheritance.php">Inheritance
+											chapter</a> that we use the <code>:</code> symbol to inherit from a class.
+									</p>
+									<p id="399651df-bc48-4eb8-b541-fc8da0e9b5bb" class="">Now we can
+										create <code>Pig</code> and <code>Dog</code> objects and call
+										the <code>animalSound()</code> method on both of them:</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="d98a4738-b6a7-4a49-aafe-d822bc7cf79e" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">class Animal  // Base class (parent)
+{
+  public void animalSound()
+  {
+    Console.WriteLine(&quot;The animal makes a sound&quot;);
+  }
+}
+
+class Pig : Animal  // Derived class (child)
+{
+  public void animalSound()
+  {
+    Console.WriteLine(&quot;The pig says: wee wee&quot;);
+  }
+}
+
+class Dog : Animal  // Derived class (child)
+{
+  public void animalSound()
+  {
+    Console.WriteLine(&quot;The dog says: bow wow&quot;);
+  }
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Animal myAnimal = new Animal();  // Create a Animal object
+    Animal myPig = new Pig();  // Create a Pig object
+    Animal myDog = new Dog();  // Create a Dog object
+
+    myAnimal.animalSound();
+    myPig.animalSound();
+    myDog.animalSound();
+  }
+}
+
+// The output will be:
+// The animal makes a soundThe animal makes a soundThe animal makes a sound</code></pre>
+								</details>
+							</li>
+						</ul>
+						<ul id="b714e6e1-021e-4255-b097-df66d8520099" class="toggle">
+							<li>
+								<details open="">
+									<summary>Abstraction</summary>
+									<h1 id="e371ea29-7364-41eb-8d53-750259048b16" class="">Abstract Classes and Methods
+									</h1>
+									<p id="97d536ff-dce0-4e2e-b726-e1c65cd2b49a" class="">
+										Data <strong>abstraction</strong> is the process of hiding certain details and
+										showing only essential information to the user.Abstraction can be achieved with
+										either <strong>abstract classes </strong>or <a
+											href="https://www.w3schools.com/cs/cs_interface.php"><strong>interfaces</strong></a><strong>
+										</strong>(which you will learn more about in the next chapter).</p>
+									<p id="9c4b2c0e-d51d-496a-b745-9c6311f9fd37" class="">
+										The <code>abstract</code> keyword is used for classes and methods:</p>
+									<ul id="21bed5c6-7d7e-45b6-b836-a8821f44bdcd" class="bulleted-list">
+										<li style="list-style-type:disc"><strong>Abstract class:</strong> is a
+											restricted class that cannot be used to create objects (to access it, it
+											must be inherited from another class).</li>
+									</ul>
+									<ul id="485f990a-f1b2-4985-bb51-5cb270566d97" class="bulleted-list">
+										<li style="list-style-type:disc"><strong>Abstract method:</strong> can only be
+											used in an abstract class, and it does not have a body. The body is provided
+											by the derived class (inherited from).</li>
+									</ul>
+									<p id="155bd905-c23e-412e-8ff4-856254bff0a6" class="">An abstract class can have
+										both abstract and regular methods:</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="ebc86367-488e-47a2-bf61-14677d789fc1" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">abstract class Animal 
+{
+  public abstract void animalSound();
+  public void sleep() 
+  {
+    Console.WriteLine(&quot;Zzz&quot;);
+  }
+}</code></pre>
+									<p id="1da0bb60-061a-4f84-926d-85a0c78c4fe1" class="">From the example above, it is
+										not possible to create an object of the Animal class:</p>
+									<p id="f2a748c3-de17-44ea-93b2-7afd913b5a45" class="">
+										<code>Animal myObj = new Animal(); // Will generate an error (Cannot create an instance of the abstract class or interface &#x27;Animal&#x27;)</code>
+									</p>
+									<p id="603d6d91-a1f5-45ba-a791-5aee1d44522e" class="">To access the abstract class,
+										it must be inherited from another class. Let&#x27;s convert the Animal class we
+										used in the <a
+											href="https://www.w3schools.com/cs/cs_polymorphism.php">Polymorphism</a> chapter
+										to an abstract class.</p>
+									<p id="84f4aaa9-9857-4a0e-98d9-1622980929f4" class="">Remember from the <a
+											href="https://www.w3schools.com/cs/cs_inheritance.php">Inheritance
+											chapter</a> that we use the <code>:</code> symbol to inherit from a class,
+										and that we use the <code>override</code> keyword to override the base class
+										method.</p>
+									<h1 id="e0ac363d-6c94-478f-a0fd-4872b7e83f73" class="">Example</h1>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="a79d84b5-4818-4767-9bbb-b1e20bff60c9" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">// Abstract class
+abstract class Animal
+{
+  // Abstract method (does not have a body)
+  public abstract void animalSound();
+  // Regular method
+  public void sleep()
+  {
+    Console.WriteLine(&quot;Zzz&quot;);
+  }
+}
+
+// Derived class (inherit from Animal)
+class Pig : Animal
+{
+  public override void animalSound()
+  {
+    // The body of animalSound() is provided here
+    Console.WriteLine(&quot;The pig says: wee wee&quot;);
+  }
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Pig myPig = new Pig(); // Create a Pig object
+    myPig.animalSound();  // Call the abstract method
+    myPig.sleep();  // Call the regular method
+  }
+}</code></pre>
+									<figure class="block-color-blue_background callout"
+										style="white-space:pre-wrap;display:flex"
+										id="23074546-7c72-4e6e-b945-3e67920fb6fa">
+										<div style="font-size:1.5em"><span class="icon">💡</span></div>
+										<div style="width:100%">Why And When To Use Abstract Classes and Methods?<p
+												id="8d1af85f-9e67-4a37-835d-07b3e2c1e69a" class="">To achieve security -
+												hide certain details and only show the important details of an object.
+											</p>
+											<p id="be4ca46a-e3fe-4dc4-a748-38a4a2dafde3" class="">
+												<strong>Note:</strong> Abstraction can also be achieved with <a
+													href="https://www.w3schools.com/cs/cs_interface.php">Interfaces</a>,
+												which you will learn more about in the next chapter.</p>
+										</div>
+									</figure>
+								</details>
+							</li>
+						</ul>
+						<ul id="5c43eb66-eb1f-4e28-ab35-7b8b422bf21f" class="toggle">
+							<li>
+								<details open="">
+									<summary>Interface</summary>
+									<p id="3260e9ce-29c5-4b68-bedc-f3dbe83efcc1" class="">Another way to achieve <a
+											href="https://www.w3schools.com/cs/cs_abstract.php">abstraction</a> in C#,
+										is with interfaces.</p>
+									<p id="21c6b911-98e3-474c-a868-1077f3007d2e" class="">An <code>interface</code> is a
+										completely &quot;<strong>abstract class</strong>&quot;, which can only contain
+										abstract methods and properties (with empty bodies):</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="0d497ef5-4eaf-45f6-8824-e1ad666b2f0b" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">// interface
+interface Animal 
+{
+  void animalSound(); // interface method (does not have a body)
+  void run();         // interface method (does not have a body)
+}</code></pre>
+									<p id="eaa5ccdc-c071-4088-858b-4c441314888e" class="">It is considered good practice
+										to start with the letter &quot;I&quot; at the beginning of an interface, as it
+										makes it easier for yourself and others to remember that it is an interface and
+										not a class.</p>
+									<p id="bdbb4447-56ff-4ac2-b3f9-5f33a3a8c25a" class="">By default, members of an
+										interface are <code>abstract</code> and <code>public</code>.</p>
+									<p id="60ab742d-245d-4150-b069-99f6e61942bd" class="">
+										<strong>Note:</strong> Interfaces can contain properties and methods, but not
+										fields.</p>
+									<p id="f0b780e5-e672-4359-9466-c39ba354693c" class="">To access the interface
+										methods, the interface must be &quot;implemented&quot; (kinda like inherited) by
+										another class. To implement an interface, use the <code>:</code> symbol (just
+										like with inheritance). The body of the interface method is provided by the
+										&quot;implement&quot; class. Note that you do not have to use
+										the <code>override</code> keyword when implementing an interface:</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="5d62e601-d660-4436-85ab-c280b854f7ba" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">// Interface
+interface IAnimal
+{
+  void animalSound(); // interface method (does not have a body)
+}
+
+// Pig &quot;implements&quot; the IAnimal interface
+class Pig : IAnimal
+{
+  public void animalSound()
+  {
+    // The body of animalSound() is provided here
+    Console.WriteLine(&quot;The pig says: wee wee&quot;);
+  }
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Pig myPig = new Pig();  // Create a Pig object
+    myPig.animalSound();
+  }
+}</code></pre>
+									<h3 id="e2b55a10-d018-4de5-b9c9-3616caf456d8" class="">Notes on Interfaces:</h3>
+									<ul id="2903583c-b737-4c62-914c-adc8875e73a4" class="bulleted-list">
+										<li style="list-style-type:disc">Like <strong>abstract classes</strong>,
+											interfaces <strong>cannot</strong> be used to create objects (in the example
+											above, it is not possible to create an &quot;IAnimal&quot; object in the
+											Program class)</li>
+									</ul>
+									<ul id="3aa9907e-80a2-47ee-b987-50a14c814d4f" class="bulleted-list">
+										<li style="list-style-type:disc">Interface methods do not have a body - the body
+											is provided by the &quot;implement&quot; class</li>
+									</ul>
+									<ul id="a1a5af07-b11e-4a12-976a-1799ad0789de" class="bulleted-list">
+										<li style="list-style-type:disc">On implementation of an interface, you must
+											override all of its methods</li>
+									</ul>
+									<ul id="502b93b8-660c-4044-8727-a1a39d6d4dae" class="bulleted-list">
+										<li style="list-style-type:disc">Interfaces can contain properties and methods,
+											but not fields/variables</li>
+									</ul>
+									<ul id="b8fbe71c-7246-4cf2-82c9-85d2eb07b53a" class="bulleted-list">
+										<li style="list-style-type:disc">Interface members are by
+											default <code>abstract</code> and <code>public</code></li>
+									</ul>
+									<ul id="305f194a-0089-4e92-a024-300d7f2a49f7" class="bulleted-list">
+										<li style="list-style-type:disc">An interface cannot contain a constructor (as
+											it cannot be used to create objects)</li>
+									</ul>
+									<figure class="block-color-blue_background callout"
+										style="white-space:pre-wrap;display:flex"
+										id="d0353f0f-5ac9-4686-83bb-ece5c264a034">
+										<div style="font-size:1.5em"><span class="icon">💡</span></div>
+										<div style="width:100%">Why And When To Use Interfaces?<p
+												id="ea9020cf-c8db-426b-9b69-9f3c9d5307de" class="">1) To achieve
+												security - hide certain details and only show the important details of
+												an object (interface).</p>
+											<p id="b5e13bae-f8db-44ac-9c22-c42878d7e571" class="">2) C# does not support
+												&quot;multiple inheritance&quot; (a class can only inherit from one base
+												class). However, it can be achieved with interfaces, because the class
+												can <strong>implement </strong>multiple interfaces.
+												<strong>Note:</strong> To implement multiple interfaces, separate them
+												with a comma (see example below).</p>
+										</div>
+									</figure>
+									<h1 id="d9f9cfbb-ae3a-4a7a-95bd-18096d8b5953" class="">Multiple Interfaces</h1>
+									<p id="deb96bf4-65c9-40df-a540-ae46d8a41a40" class="">To implement multiple
+										interfaces, separate them with a comma:</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="7364a25b-1409-44bc-9eb8-e714c57f41d3" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">interface IFirstInterface
+{
+  void myMethod(); // interface method
+}
+
+interface ISecondInterface
+{
+  void myOtherMethod(); // interface method
+}
+
+// Implement multiple interfaces
+class DemoClass : IFirstInterface, ISecondInterface
+{
+  public void myMethod()
+  {
+    Console.WriteLine(&quot;Some text..&quot;);
+  }
+  public void myOtherMethod()
+  {
+    Console.WriteLine(&quot;Some other text...&quot;);
+  }
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    DemoClass myObj = new DemoClass();
+    myObj.myMethod();
+    myObj.myOtherMethod();
+  }
+}</code></pre>
+								</details>
+							</li>
+						</ul>
+						<ul id="79546871-1e69-468a-98ad-78368ac12862" class="toggle">
+							<li>
+								<details open="">
+									<summary>Enum</summary>
+									<p id="fb70a8e4-7423-42c1-b75c-29748296a7c7" class="">An <code>enum</code> is a
+										special &quot;class&quot; that represents a group
+										of <strong>constants</strong> (unchangeable/read-only variables).</p>
+									<p id="c45f2eef-f52c-488f-a3b5-ac19a7159b06" class="">To create
+										an <code>enum</code>, use the <code>enum</code> keyword (instead of class or
+										interface), and separate the enum items with a comma:</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="096f0708-4ecf-4909-b9ef-1a119efecd22" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">enum Level
+{
+  Low,
+  Medium,
+  High
+}</code></pre>
+									<p id="bfd3cde2-54b7-44e3-8697-a3256ed69a2b" class="">You can
+										access <code>enum</code> items with the <strong>dot</strong> syntax:</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="f78ea605-3cff-4ba7-81ce-049ad909bd39" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">Level myVar = Level.Medium;
+Console.WriteLine(myVar);</code></pre>
+									<p id="78405712-6680-4d3d-a9ca-499d0748c84b" class="">Enum is short for
+										&quot;enumerations&quot;, which means &quot;specifically listed&quot;.</p>
+									<h1 id="d3e5325d-71b0-42f7-9dc1-d9418e11a687" class="">Enum inside a Class</h1>
+									<p id="ce49d98d-1b8a-43f0-8876-f6316e0881ea" class="">You can also have
+										an <code>enum</code> inside a class:</p>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="652f424c-c62c-40b9-81f0-9253f5972353" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">class Program
+{
+  enum Level
+  {
+    Low,
+    Medium,
+    High
+  }
+  static void Main(string[] args)
+  {
+    Level myVar = Level.Medium;
+    Console.WriteLine(myVar);
+  }
+}
+
+// The output will be:
+// Medium</code></pre>
+								</details>
+							</li>
+						</ul>
+					</details>
+				</li>
+			</ul>
+			<ul id="c41b5847-b9a2-4a1e-baeb-306d845d0683" class="toggle">
+				<li>
+					<details open="">
+						<summary>File</summary>
+						<h1 id="0f93fef2-b28f-4247-a887-34fba3fe22d8" class="">Working With Files</h1>
+						<p id="a732e888-3c10-4335-bfe2-9ffc09070f38" class="">The <code>File</code> class from
+							the <code>System.IO</code> namespace, allows us to work with files:</p>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+							integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+							crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+						<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+							integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+							crossorigin="anonymous" referrerPolicy="no-referrer" />
+						<pre id="96d7f5a0-6938-4faf-958f-60032358e519" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">using System.IO;        // include the System.IO namespace
+
+File.SomeFileMethod();  // use the file class with methods</code></pre>
+						<p id="b6e5ad49-29b5-49f2-bbb7-1b8f765dfdaf" class="">The <code>File</code> class has many
+							useful methods for creating and getting information about files. For example:</p>
+						<table id="ba8db466-e314-4ca7-958e-3a96e8705ae6" class="simple-table">
+							<tbody>
+								<tr id="b7ad15e8-c970-4fca-a0e4-bd61af14da66">
+									<td id="PJo:" class="" style="width:647px">Method</td>
+									<td id="a~Ls" class="" style="width:647px">Description</td>
+								</tr>
+								<tr id="ff91a962-5e1a-4aba-ad09-97e5852de8bc">
+									<td id="PJo:" class="" style="width:647px"><code>AppendText()</code></td>
+									<td id="a~Ls" class="" style="width:647px">Appends text at the end of an existing
+										file</td>
+								</tr>
+								<tr id="0f66afa4-33c2-4c40-b716-f99a719af5a0">
+									<td id="PJo:" class="" style="width:647px"><code>Copy()</code></td>
+									<td id="a~Ls" class="" style="width:647px">Copies a file</td>
+								</tr>
+								<tr id="077d28e0-0fa6-40ff-994f-8ac877c0dbc7">
+									<td id="PJo:" class="" style="width:647px"><code>Create()</code></td>
+									<td id="a~Ls" class="" style="width:647px">Creates or overwrites a file</td>
+								</tr>
+								<tr id="b68ece26-e899-4bbd-8280-9139fce98f91">
+									<td id="PJo:" class="" style="width:647px"><code>Delete()</code></td>
+									<td id="a~Ls" class="" style="width:647px">Deletes a file</td>
+								</tr>
+								<tr id="6c0a9d22-e57e-44bc-a725-cf3270d0b952">
+									<td id="PJo:" class="" style="width:647px"><code>Exists()</code></td>
+									<td id="a~Ls" class="" style="width:647px">Tests whether the file exists</td>
+								</tr>
+								<tr id="c1e362cc-6d8f-4707-9fb0-c54a7e4c76b0">
+									<td id="PJo:" class="" style="width:647px"><code>ReadAllText()</code></td>
+									<td id="a~Ls" class="" style="width:647px">Reads the contents of a file</td>
+								</tr>
+								<tr id="0179f1c1-7b41-41d5-a7cf-13b303d5ea85">
+									<td id="PJo:" class="" style="width:647px"><code>Replace()</code></td>
+									<td id="a~Ls" class="" style="width:647px">Replaces the contents of a file with the
+										contents of another file</td>
+								</tr>
+								<tr id="e8af6081-fc8a-46a5-bd42-480a77b4e290">
+									<td id="PJo:" class="" style="width:647px"><code>WriteAllText()</code></td>
+									<td id="a~Ls" class="" style="width:647px">Creates a new file and writes the
+										contents to it. If the file already exists, it will be overwritten.</td>
+								</tr>
+							</tbody>
+						</table>
+						<p id="780c7692-0a77-4ae7-b7ad-d9c9f3d35c18" class="">For a full list of File methods, go to <a
+								href="https://docs.microsoft.com/en-us/dotnet/api/system.io.file?view=netframework-4.8">Microsoft
+								.Net File Class Reference</a>.</p>
+						<hr id="900e01c4-b877-4f08-9873-eb24e7fd6a32" />
+						<h1 id="7c7f9fb2-2913-48fc-865b-674d0b5ac941" class="">Write To a File and Read It</h1>
+						<p id="e86e8801-f75a-45c0-a803-769da8eef384" class="">In the following example, we use
+							the <code>WriteAllText()</code> method to create a file named &quot;filename.txt&quot; and
+							write some content to it. Then we use the <code>ReadAllText()</code> method to read the
+							contents of the file:</p>
+						<h1 id="a486bfbc-515f-4f57-aa6a-0cf3f5cdc145" class="">Example</h1>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+							integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+							crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+						<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+							integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+							crossorigin="anonymous" referrerPolicy="no-referrer" />
+						<pre id="4ae0a257-6251-488c-b88c-ba98f17d7c33" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">using System.IO;  // include the System.IO namespace
+
+string writeText = &quot;Hello World!&quot;;  // Create a text string
+File.WriteAllText(&quot;filename.txt&quot;, writeText);  // Create a file and write the content of writeText to it
+
+string readText = File.ReadAllText(&quot;filename.txt&quot;);  // Read the contents of the file
+Console.WriteLine(readText);  // Output the content
+
+// The output will be:
+// Hello World!</code></pre>
+					</details>
+				</li>
+			</ul>
+			<ul id="90e22e4e-4dbd-4c40-9089-12eeb968953b" class="toggle">
+				<li>
+					<details open="">
+						<summary>Exceptions - Try..Catch</summary>
+						<h1 id="a4489898-7dfd-4bc2-aa6f-80ff64dbd180" class="">C# Exceptions</h1>
+						<p id="b870139b-34d5-4b63-844c-286a5b1d6e2a" class="">When executing C# code, different errors
+							can occur: coding errors made by the programmer, errors due to wrong input, or other
+							unforeseeable things.</p>
+						<p id="9540d3d9-2fe4-4f5f-8b4d-57a94a9e607c" class="">When an error occurs, C# will normally
+							stop and generate an error message. The technical term for this is: C# will throw
+							an <strong>exception</strong> (throw an error).</p>
+						<hr id="f257917c-02ee-4fb8-a275-868db9aeaa17" />
+						<h1 id="1fb24464-3d7a-4308-a9d4-bd949fd4c969" class="">C# try and catch</h1>
+						<p id="99077e1e-99a3-4c32-95f6-3bd9f9982fe3" class="">The <code>try</code> statement allows you
+							to define a block of code to be tested for errors while it is being executed.</p>
+						<p id="8b1b9a18-aae4-4ba2-ac5a-c1ea4616357c" class="">The <code>catch</code> statement allows
+							you to define a block of code to be executed, if an error occurs in the try block.</p>
+						<p id="288fbcd7-6b55-4357-9a96-5b0d3e738b31" class="">
+							The <code>try</code> and <code>catch</code> keywords come in pairs:</p>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+							integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+							crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+						<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+							integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+							crossorigin="anonymous" referrerPolicy="no-referrer" />
+						<pre id="e00c82dd-f338-4c5e-aa70-89b9d128a9cf" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">try 
+{
+  //  Block of code to try
+}
+catch (Exception e)
+{
+  //  Block of code to handle errors
+}</code></pre>
+						<p id="bffa2209-81c0-45ca-8a97-198cf67f2920" class="">Consider the following example, where we
+							create an array of three integers:</p>
+						<p id="d4fde2f2-1868-4c75-9824-64744dd1a03b" class="">This will generate an error
+							because <code><strong>myNumbers[10]</strong></code> does not exist.</p>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+							integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+							crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+						<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+							integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+							crossorigin="anonymous" referrerPolicy="no-referrer" />
+						<pre id="4d66523f-b1be-4d22-aee6-71d856448e2b" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">int[] myNumbers = {1, 2, 3};
+Console.WriteLine(myNumbers[10]); // error!</code></pre>
+						<p id="e1760dfd-59cc-4de8-afe5-7946ff88bae0" class="">The error message will be something like
+							this:</p>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+							integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+							crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+						<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+							integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+							crossorigin="anonymous" referrerPolicy="no-referrer" />
+						<pre id="90f3c4e5-c2d1-45f1-bd31-d48cd2490a17"
+							class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">System.IndexOutOfRangeException: &#x27;Index was outside the bounds of the array.&#x27;</code></pre>
+						<p id="04d37c5e-bfae-4692-87a6-99f44c6815ec" class="">If an error occurs, we can
+							use <code>try...catch</code> to catch the error and execute some code to handle it.</p>
+						<p id="3ea3c828-4b77-4ce9-bf88-61ce7bcd81ff" class="">In the following example, we use the
+							variable inside the catch block (<code>e</code>) together with the
+							built-in <code>Message</code> property, which outputs a message that describes the
+							exception:</p>
+						<h1 id="b67fbe62-1efd-40b6-a863-05661b266a8b" class="">Example</h1>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+							integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+							crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+						<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+							integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+							crossorigin="anonymous" referrerPolicy="no-referrer" />
+						<pre id="9aaeb7fe-7727-4cf5-b1fb-43dba03047d5" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">try
+{
+  int[] myNumbers = {1, 2, 3};
+  Console.WriteLine(myNumbers[10]);
+}
+catch (Exception e)
+{
+  Console.WriteLine(e.Message);
+}
+
+// The output will be:
+// Index was outside the bounds of the array.</code></pre>
+						<p id="dc7925eb-b5cd-48a3-a98f-77ddaee81729" class="">You can also output your own error
+							message:</p>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+							integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+							crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+						<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+							integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+							crossorigin="anonymous" referrerPolicy="no-referrer" />
+						<pre id="6ad327dc-cb11-49f4-96a9-47f28500a716" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">try
+{
+  int[] myNumbers = {1, 2, 3};
+  Console.WriteLine(myNumbers[10]);
+}
+catch (Exception e)
+{
+  Console.WriteLine(&quot;Something went wrong.&quot;);
+}
+
+// The output will be: 
+// Something went wrong.</code></pre>
+						<h1 id="2c47fa11-9f36-41fa-aa59-dc3d8f1a7b20" class="">Finally</h1>
+						<p id="17d7c17f-0304-496e-ac49-a9fb6114537a" class="">The <code>finally</code> statement lets
+							you execute code, after <code>try...catch</code>, regardless of the result:</p>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+							integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+							crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+						<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+							integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+							crossorigin="anonymous" referrerPolicy="no-referrer" />
+						<pre id="abce5a65-a6fe-4f2a-a4a4-e01d3150e864" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">try
+{
+  int[] myNumbers = {1, 2, 3};
+  Console.WriteLine(myNumbers[10]);
+}
+catch (Exception e)
+{
+  Console.WriteLine(&quot;Something went wrong.&quot;);
+}
+finally
+{
+  Console.WriteLine(&quot;The &#x27;try catch&#x27; is finished.&quot;);
+}
+
+// The output will be:
+// Something went wrong.The &#x27;try catch&#x27; is finished.</code></pre>
+						<h1 id="bc6bc628-e285-4c22-81f4-d91e1de63d78" class="">The throw keyword</h1>
+						<p id="0ccebf97-cb97-4ddd-b136-13d73559d7d2" class="">The <code>throw</code> statement allows
+							you to create a custom error.</p>
+						<p id="790dfe2c-6814-43c9-8dd0-4ed63b0f36d0" class="">The <code>throw</code> statement is used
+							together with an <strong>exception class</strong>. There are many exception classes
+							available in C#: <code>ArithmeticException</code>, <code>FileNotFoundException</code>,
+							<code>IndexOutOfRangeException</code>, <code>TimeOutException</code>, etc.</p>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+							integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+							crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+						<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+							integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+							crossorigin="anonymous" referrerPolicy="no-referrer" />
+						<pre id="3fad859c-7d88-4c48-8e1b-55efe1588046" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">static void checkAge(int age)
+{
+  if (age &lt; 18)
+  {
+    throw new ArithmeticException(&quot;Access denied - You must be at least 18 years old.&quot;);
+  }
+  else
+  {
+    Console.WriteLine(&quot;Access granted - You are old enough!&quot;);
+  }
+}
+
+static void Main(string[] args)
+{
+  checkAge(15);
+}
+
+// The error message displayed in the program will be:
+// System.ArithmeticException: &#x27;Access denied - You must be at least 18 years old.&#x27;</code></pre>
+						<p id="0d6f8e8d-f017-48dc-bdfa-b43e55e742e2" class="">If <code>age</code> was 20, you
+							would <strong>not</strong> get an exception:</p>
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+							integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+							crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+						<link rel="stylesheet"
+							href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+							integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+							crossorigin="anonymous" referrerPolicy="no-referrer" />
+						<pre id="a442524c-6bf7-45e1-a23c-a2262c99e271" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">checkAge(20);
+
+// The output will be:
+// Access granted - You are old enough!</code></pre>
+					</details>
+				</li>
+			</ul>
+			<ul id="8c9311a5-4eba-494c-b964-84620335173e" class="toggle">
+				<li>
+					<details open="">
+						<summary>Delegate</summary>
+						<ul id="03d3a151-02fd-4dff-b097-5c8da9399ae3" class="toggle">
+							<li>
+								<details open="">
+									<summary>Example 1</summary>
+									<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+										integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+										crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+									<link rel="stylesheet"
+										href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+										integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+										crossorigin="anonymous" referrerPolicy="no-referrer" />
+									<pre id="4d4dd40d-1845-487b-b1cd-7efb53f2f768" class="code"><code class="language-C#" style="white-space:pre-wrap;word-break:break-all">using System;
+
+// Create delegate
+public delegate void Maths(int valOne, int valTwo);
+// Create methods to use with delegate
+class MathsDemo
+{
+    static void Addition(int valOne, int valTwo)
+    {
+        int result = valOne + valTwo;
+        Console.WriteLine($&quot;Addition: {valOne} + {valTwo} =  {valOne+valTwo}&quot;);
+    }
+    static void Subtraction(int valOne, int valTwo)
+    {
+        int result = valOne - valTwo;
+        Console.WriteLine($&quot;Subtraction: {valOne} - {valTwo} =  {valOne-valTwo}&quot;);
+    }
+    static void Multiplication(int valOne, int valTwo)
+    {
+        int result = valOne * valTwo;
+        Console.WriteLine($&quot;Multiplication: {valOne} * {valTwo} =  {valOne*valTwo}&quot;);
+    }
+    static void Division(int valOne, int valTwo)
+    {
+        int result = valOne / valTwo;
+        Console.WriteLine($&quot;Division: {valOne} / {valTwo} =  {valOne/valTwo}&quot;);
+    }
+    static void Main(string[] args)
+    {
+        Maths objMaths = new Maths(Addition);
+        objMaths += new Maths(Subtraction);
+        objMaths += new Maths(Multiplication);
+        objMaths += Division;
+        if (objMaths != null)
+        {
+            objMaths(20, 10);
+        }
+        objMaths -=  Division;
+        objMaths -=  Subtraction;
+        objMaths -=  Multiplication;
+        objMaths -=  Addition;
+        if (objMaths == null)
+        {
+            Console.WriteLine(&quot;Hi&quot;);
+        }
+    }
+}</code></pre>
+								</details>
+							</li>
+						</ul>
+					</details>
+				</li>
+			</ul>
+		</div>
+	</article><span class="sans" style="font-size:14px;padding-top:2em"></span>
+</body>
+
+</html>

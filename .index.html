@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="assets/imgs/avatar1.png" type="image/x-icon">
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+    <!-- <meta name="description" content="Start your development with Steller landing page.">
+    <meta name="author" content="Devcrud"> -->
+    <title>Portfolio of Wiviart</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Steller main styles -->
+    <link rel="stylesheet" href="assets/css/steller.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Preview</title>
+    <style>
+        #thumbnail {
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 1;
+        }
+
+        #thumbnail:hover {
+            transform: scale(1.1);
+        }
+
+        #preview {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #preview img {
+            max-width: 700px;
+            max-height: 700px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            z-index: 999;
+            width: 50px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<script>
+    var currentMediaIndex = 0;
+    var mediaItems = [];
+
+    function openMediaPreview(media) {
+        var preview = document.getElementById('preview');
+        var mediaContainer = document.getElementById('media-container');
+
+        // Set the media items and reset the index
+        mediaItems = media;
+        currentMediaIndex = 0;
+
+        // Display the first media item
+        showCurrentMedia(mediaContainer);
+
+        preview.style.display = 'flex';
+    }
+
+    function showCurrentMedia(container) {
+        var currentMedia = mediaItems[currentMediaIndex];
+        if (currentMedia.endsWith('.mp4')) {
+            // If it's a video
+            container.innerHTML = '<video controls style="max-width: 700px; max-height: 700px;"><source src="' + currentMedia + '" type="video/mp4"></video>';
+        } else if (currentMedia.includes('youtube.com/watch') || currentMedia.includes('youtu.be/')) {
+            // If it's a YouTube URL
+            var videoId = getYouTubeVideoId(currentMedia);
+            container.innerHTML = '<iframe width="700" height="450" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>';
+        } else {
+            // If it's an image
+            container.innerHTML = '<img src="' + currentMedia + '" alt="Preview Media" style="max-width: 700px; max-height: 700px;">';
+        }
+    }
+
+    function getYouTubeVideoId(url) {
+        // Extract the YouTube video ID from the URL
+        var videoId = '';
+        if (url.includes('youtube.com/watch')) {
+            videoId = url.split('v=')[1].split('&')[0];
+        } else if (url.includes('youtu.be/')) {
+            videoId = url.split('youtu.be/')[1];
+        }
+        return videoId;
+    }
+
+    function nextMedia() {
+        currentMediaIndex = (currentMediaIndex + 1) % mediaItems.length;
+        var mediaContainer = document.getElementById('media-container');
+        showCurrentMedia(mediaContainer);
+    }
+
+    function prevMedia() {
+        currentMediaIndex = (currentMediaIndex - 1 + mediaItems.length) % mediaItems.length;
+        var mediaContainer = document.getElementById('media-container');
+        showCurrentMedia(mediaContainer);
+    }
+
+    window.onclick = function (event) {
+        var preview = document.getElementById('preview');
+        if (event.target === preview) {
+            preview.style.display = 'none';
+            nextMedia();
+        }
+    };
+
+    function closePreview() {
+        document.getElementById('preview').style.display = 'none';
+        if (event.target === preview) {
+            preview.style.display = 'none';
+            mediaItems = [];
+        }
+    }
+</script>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Page navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" data-spy="affix" data-offset-top="0">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="assets/imgs/logo.svg" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#service">Service</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#testmonial">Testmonial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="- btn btn-primary rounded ml-4"
+                            href="https://drive.google.com/file/d/1FQfJvXO3hYaBcKlG4hIGm6EHlVrPBwCz/view?usp=sharing">Get
+                            My CV</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End of page navibation -->
+
+    <!-- Page Header -->
+    <header class="header" id="home">
+        <div class="container">
+            <div class="infos">
+                <h6 class="subtitle">Welcome, I'm</h6>
+                <h6 class="title">Pham Huu Dung</h6>
+                <p>A <b>Game Developer</b> From Vietnam</p>
+
+                <!-- <div class="buttons pt-3">
+                    <button class="btn btn-primary rounded">HIRE ME</button>
+                    <button class="btn btn-dark rounded">DOWNLOAD CV</button>
+                </div> -->
+
+                <div class="socials mt-4">
+                    <a class="social-item" href="https://www.facebook.com/Wisiviart/" target="_blank"><i
+                            class="ti-facebook"></i></a>
+                    <a class="social-item" href="mailto:phamhuudung.email@gmail.com" target="_blank"><i
+                            class="ti-google"></i></a>
+                    <a class="social-item" href="https://github.com/Wiviart" target="_blank"><i
+                            class="ti-github"></i></a>
+                    <!-- <a class="social-item" href="javascript:void(0)" target="_blank"><i class="ti-twitter"></i></a> -->
+                    <a class="social-item" href="https://www.linkedin.com/in/dungpham-unity/" target="_blank"><i
+                            class="ti-linkedin"></i></a>
+                    <a class="social-item" href="https://wiviart.itch.io/" target="_blank"><i
+                            class="fab fa-itch-io"></i></a>
+                </div>
+            </div>
+            <div class="img-holder">
+                <img src="assets/imgs/avatar2.png" alt="">
+            </div>
+        </div>
+
+        <!-- Header-widget -->
+        <!-- <div class="widget">
+            <div class="widget-item">
+                <h2>124</h2>
+                <p>Happy Clients</p>
+            </div>
+            <div class="widget-item">
+                <h2>456</h2>
+                <p>Project Completed</p>
+            </div>
+            <div class="widget-item">
+                <h2>789</h2>
+                <p>Awards Won</p>
+            </div>
+        </div> -->
+    </header>
+    <!-- End of Page Header -->
+
+    <!-- About section -->
+    <section id="about" class="section mt-3">
+        <div class="container mt-5">
+            <div class="row text-center text-md-left">
+                <div class="col-md-3">
+                    <img src="assets/imgs/avatar.png" alt="" class="img-thumbnail mb-4">
+                </div>
+                <div class="pl-md-4 col-md-9">
+                    <h6 class="subtitle">About</h6>
+                    <h6 class="title">Phạm Hữu Dũng</h6>
+                    <p class="subtitle"><b>Game Developer</b></p>
+                    <p>Driven by a passion for technology and creativity, I chose to pursue a career in game development
+                        using Unity. Despite the challenges in this dynamic field, I have embraced the journey with
+                        dedication, continuously acquiring new knowledge and honing my skills.</p>
+                    <p>With strong logical thinking, a proactive approach to research, and a commitment to
+                        self-learning, I excel at developing engaging games and resolving complex issues independently.
+                    </p>
+                    <a href="https://drive.google.com/file/d/1FQfJvXO3hYaBcKlG4hIGm6EHlVrPBwCz/view?usp=sharing"
+                        target="_blank">
+                        <button class="btn btn-primary rounded mt-3">DOWNLOAD CV</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service section -->
+    <!-- <section id="service" class="section">
+        <div class="container text-center">
+            <h6 class="subtitle">Service</h6>
+            <h6 class="section-title mb-4">What I Do</h6>
+            <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br>
+                rerum commodi corrupti, temporibus non quam.</p>
+
+            <div class="row">
+                <div class="col-sm-6 col-md-3 mb-4">
+                    <div class="custom-card card border">
+                        <div class="card-body">
+                            <i class="fa-brands fa-unity"></i>
+                            <h5>Unity Developing</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 mb-4">
+                    <div class="custom-card card border">
+                        <div class="card-body">
+                            <i class="icon ti-desktop"></i>
+                            <h5>C# .Net</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 mb-4">
+                    <div class="custom-card card border">
+                        <div class="card-body">
+                            <i class="icon ti-mobile"></i>
+                            <h5>Game</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 mb-4">
+                    <div class="custom-card card border">
+                        <div class="card-body">
+                            <i class="icon ti-bar-chart"></i>
+                            <h5>Internal Regulations</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- End of Sectoin -->
+
+    <!-- Skills section -->
+    <section id="skills" class="section">
+        <div class="container text-center">
+            <h6 class="subtitle">Skills</h6>
+            <h6 class="section-title mb-4">Why Choose me</h6>
+            <p class="mb-5 pb-4">I have good knowledge in:</p>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="custom-card card border">
+                        <div class="card-body">
+                            <i class="fa-brands fa-unity"></i>
+                            <h5>Unity</h5>
+                            <p style="margin: 0px;">2D, 3D, VR</p>
+                            <p style="margin: 0px;">Fusion Photon</p>
+                            <p style="margin: 0px;">Particle System</p>
+                            <p style="margin: 0px;">Post Processing</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="custom-card card border">
+                        <div class="card-body">
+                            <i class="fa-solid fa-code"></i>
+                            <h5>Programing</h5>
+                            <p style="margin: 0px;">C#</p>
+                            <p style="margin: 0px;">C, C++</p>
+                            <p style="margin: 0px;">Python</p>
+                            <p style="margin: 0px;">Design Patterns</p>
+                            <p style="margin: 0px;">SOLID</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="custom-card card border">
+                        <div class="card-body">
+                            <i class="fa-solid fa-gear"></i>
+                            <h5>Tools</h5>
+                            <p style="margin: 0px;">Github</p>
+                            <p style="margin: 0px;">Docker</p>
+                            <p style="margin: 0px;">Photoshop</p>
+                            <p style="margin: 0px;">Linux</p>
+                            <p style="margin: 0px;">Word, Excel</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="custom-card card border">
+                        <div class="card-body">
+                            <i class="fa-solid fa-gears"></i>
+                            <h5>Others</h5>
+                            <p style="margin: 0px;">SCRUM</p>
+                            <p style="margin: 0px;">Team work</p>
+                            <p style="margin: 0px;">Independently work</p>
+                            <p style="margin: 0px;">Legal</p>
+                            <p style="margin: 0px;">Internal Regulations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row text-left">
+                <div class="col-sm-6">
+                    <h6 class="mb-3">Unity</h6>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%;" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <h6 class="mb-3">C#</h6>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 83%;" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"><span>83%</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <h6 class="mb-3">Word, Excel</h6>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 95%;" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"><span>95%</span></div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <h6 class="mb-3">Debug</h6>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 90%;" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"><span>90%</span></div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+    <!-- End of Skills sections -->
+
+    <!-- Portfolio section -->
+    <section id="portfolio" class="section">
+        <div class="container text-center">
+            <h6 class="subtitle">Portfolio</h6>
+            <h6 class="section-title mb-4">Check Out My Projects</h6>
+            <p class="mb-5 pb-4">Here are some standout products that I have been working on recently.</p>
+
+            <div id="projectCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Project 1 -->
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail"
+                                        src="https://img.itch.zone/aW1nLzE0MzcyOTMwLnBuZw==/315x250%23c/Szx6uJ.png"
+                                        alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>QUINTESSENCE Illuminating Shadow</h5>
+                                            <a href="javascript:void(0)"
+                                                onclick="openMediaPreview(['www.youtube.com/watch?v=DBgWSdlX6AM'])">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io/quintessence-illuminating-shadow"
+                                                target="_blank"><i class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail"
+                                        src="https://img.itch.zone/aW1nLzEyMzUzNjM5LnBuZw==/315x250%23c/9jm0sA.png"
+                                        alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>SLIME Another World Adventure</h5>
+                                            <a onclick="openMediaPreview(
+                                                    [
+                                                        'www.youtube.com/watch?v=P1zNONMMOVk',
+                                                        'assets/imgs/folio-21.png',
+                                                        'assets/imgs/folio-22.png',
+                                                        'assets/imgs/folio-23.png',
+                                                        'assets/imgs/folio-24.png',
+                                                        'assets/imgs/folio-25.png',
+                                                        'assets/imgs/folio-26.png',
+                                                    ])">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io/slime-another-world-adventure"
+                                                target="_blank"><i class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail"
+                                        src="https://img.itch.zone/aW1nLzEyNTI0MzM4LnBuZw==/315x250%23c/sKxyRi.png"
+                                        alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>Lines98</h5>
+                                            <a href="javascript:void(0)"
+                                                onclick="openMediaPreview(['youtu.be/IUPr0fD5Mfk'])">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io/line-98" target="_blank"><i
+                                                    class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail" src="assets/imgs/folio-3.png" alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>RESTful API</h5>
+                                            <a href="javascript:void(0)" onclick="openMediaPreview(
+                                                    [   
+                                                        'youtu.be/EVpzz7Gxi2c',
+                                                        'youtu.be/z24JT2unkNQ',
+                                                        'youtu.be/0MXvzssKEgU'
+                                                    ]
+                                                )">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io/weather-forcast" target="_blank"><i
+                                                    class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail"
+                                        src="https://img.itch.zone/aW1nLzEyNTI0MzU5LnBuZw==/315x250%23c/TnqZcN.png"
+                                        width="800px" alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>Minesweeper</h5>
+                                            <a href="javascript:void(0)"
+                                                onclick="openMediaPreview(['youtu.be/f1QRl03yjbs'])">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io/minesweeper" target="_blank"><i
+                                                    class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="img-wrapper">
+                                    <img id="thumbnail" src="assets/imgs/folio-71.png" alt="Thumbnail">
+                                    <div class="overlay">
+                                        <div class="overlay-infos">
+                                            <h5>Others</h5>
+                                            <a href="javascript:void(0)" onclick="openMediaPreview(
+                                                    [
+                                                        'youtu.be/6fH0Z3Dktgc',
+                                                    ]
+                                                )">
+                                                <i class="ti-zoom-in"></i>
+                                            </a>
+                                            <a href="https://wiviart.itch.io" target="_blank"><i
+                                                    class="ti-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more carousel items as needed -->
+                </div>
+
+                <a class="carousel-control-prev" href="#projectCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#projectCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div id="preview">
+            <button id="prevBtn" class="carousel-control-prev-icon" onclick="prevMedia()"></button>
+            <span id="close-btn" onclick="closePreview()">&times;</span>
+            <div id="media-container"></div>
+            <button id="nextBtn" class="carousel-control-next-icon" onclick="nextMedia()"></button>
+        </div>
+    </section>
+    <!-- End of portfolio section -->
+
+    <!-- Testmonial Section -->
+    <!-- <section id="testmonial" class="section">
+        <div class="container text-center">
+            <h6 class="subtitle">Testmonial</h6>
+            <h6 class="section-title mb-4">What People Say About Me</h6>
+            <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br>
+                rerum commodi corrupti, temporibus non quam.</p>
+
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="card testmonial-card border">
+                            <div class="card-body">
+                                <img src="assets/imgs/avatar-1.jpg" alt="">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nostrum voluptates
+                                    in enim vel amet?</p>
+                                <h1 class="title">Emma Re</h1>
+                                <h1 class="subtitle">Graphic Designer</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card testmonial-card border">
+                            <div class="card-body">
+                                <img src="assets/imgs/avatar-2.jpg" alt="">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nostrum voluptates
+                                    in enim vel amet?</p>
+                                <h1 class="title">James Bert</h1>
+                                <h1 class="subtitle">Web Designer</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card testmonial-card border">
+                            <div class="card-body">
+                                <img src="assets/imgs/avatar-3.jpg" alt="">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nostrum voluptates
+                                    in enim vel amet?</p>
+                                <h1 class="title">Michael Abra</h1>
+                                <h1 class="subtitle">Web Developer</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- End of testmonial section -->
+
+    <!-- Blog Section -->
+    <!--     <section id="blog" class="section">
+        <div class="container text-center">
+            <h6 class="subtitle">My Blogs</h6>
+            <h6 class="section-title mb-4">Latest Articles</h6>
+            <p class="mb-5 pb-4"></p>
+
+            <div class="row text-left">
+                <div class="col-md-4">
+                    <div class="card border mb-4">
+                        <img src="assets/imgs/blog-1.png" alt="" class="card-img-top w-100">
+                        <div class="card-body">
+                            <h5 class="card-title">C# Cheatsheet</h5>
+                            <div class="post-details">
+                                <a href="javascript:void(0)">Posted By: Admin</a>
+                                 <a href="javascript:void(0)"><i class="ti-thumb-up"></i> 456</a>
+                                <a href="javascript:void(0)"><i class="ti-comment"></i> 123</a> 
+                            </div>
+                            <p>
+                                C# Cheatsheet
+                            </p>
+                            <a href="blogs/csharp.html">Read More..</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border mb-4">
+                        <img src="assets/imgs/blog-2.png" alt="" class="card-img-top w-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Github Cheatsheet</h5>
+                            <div class="post-details">
+                                <a href="javascript:void(0)">Posted By: Admin</a>
+                                 <a href="javascript:void(0)"><i class="ti-thumb-up"></i> 456</a>
+                                <a href="javascript:void(0)"><i class="ti-comment"></i> 123</a> 
+                            </div>
+                            <p>Github Cheatsheet</p>
+                            <a href="blogs/git.html">Read More..</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border mb-4">
+                        <img src="assets/imgs/blog-3.png" alt="" class="card-img-top w-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Docker Cheatsheet</h5>
+                            <div class="post-details">
+                                <a href="javascript:void(0)">Posted By: Admin</a>
+                                 <a href="javascript:void(0)"><i class="ti-thumb-up"></i> 456</a>
+                                <a href="javascript:void(0)"><i class="ti-comment"></i> 123</a> 
+                            </div>
+                            <p>Docker Cheatsheet</p>
+                            <a href="blogs/docker.html">Read More..</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ -->
+    <!-- Hire me section -->
+    <!-- <section class="bg-gray p-0 section">
+        <div class="container">
+            <div class="card bg-primary">
+                <div class="card-body text-light">
+                    <div class="row align-items-center">
+                        <div class="col-sm-9 text-center text-sm-left">
+                            <h5 class="mt-3">Hire Me For Your Project</h5>
+                            <p class="mb-3">Accusantium labore nostrum similique quisquam.</p>
+                        </div>
+                        <div class="col-sm-3 text-center text-sm-right">
+                            <button class="btn btn-light rounded">Hire Me!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- End od Hire me section. -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="position-relative section">
+        <div class="container text-center">
+            <!-- <h6 class="subtitle">Contact</h6> -->
+            <!-- <h6 class="section-title mb-4">Get In Touch With Me</h6> -->
+            <!-- <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br>
+                rerum commodi corrupti, temporibus non quam.</p> -->
+
+            <div class="contact text-left">
+                <!-- <div class="form">
+                    <h6 class="subtitle">Available 24/7</h6>
+                    <h6 class="section-title mb-4">Get In Touch</h6>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Subject"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="contact-message" id="" cols="30" rows="5" class="form-control"
+                                placeholder="Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block rounded w-lg">Send Message</button>
+                    </form>
+                </div> -->
+                <div class="form">
+                    <!-- <h6 class="subtitle">Available 24/7</h6> -->
+                    <h6 class="section-title mb-4">Get In Touch</h6>
+                    <form action="mailto:phamhuudung.email@gmail.com" method="post" enctype="text/plain"
+                        target="_blank">
+                        <!-- <div class="form-group">
+                            <input type="email" class="form-control" name="email" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter email" required>
+                        </div> -->
+                        <!-- <div class="form-group">
+                            <input type="text" class="form-control" name="subject" id="exampleInputSubject"
+                                placeholder="Subject" required>
+                        </div> -->
+                        <div class="form-group">
+                            <textarea name="message" id="contact-message" cols="30" rows="5" class="form-control"
+                                placeholder="Type your message here" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block rounded w-lg">Send Message</button>
+                    </form>
+                </div>
+                <!-- <div class="contact-infos">
+                    <div class="item">
+                        <i class="ti-location-pin"></i>
+                        <div class="">
+                            <h5>Location</h5>
+                            <p> Hochiminh City, Vietnam</p>
+                        </div>                          
+                    </div>
+                    <div class="item">
+                        <i class="ti-mobile"></i>
+                        <div>
+                            <h5>Phone Number</h5>
+                            <p>(123) 456-7890</p>
+                        </div>                          
+                    </div>
+                    <div class="item">
+                        <i class="ti-email"></i>
+                        <div class="mb-0">
+                            <h5>Email Address</h5>
+                            <p>info@website.com</p>
+                        </div>
+                    </div>
+                </div>                   -->
+            </div>
+        </div>
+        <!-- <div id="map">
+            <iframe src="https://snazzymaps.com/embed/61257"></iframe>
+        </div> -->
+    </section>
+    <!-- End of Contact Section -->
+
+    <!-- Page Footer -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <!-- <p>Copyright
+                        <script>document.write(new Date().getFullYear())</script> &copy; <a
+                            href="http://www.devcrud.com" target="_blank">DevCRUD</a>
+                    </p> -->
+                </div>
+                <!-- <div class="col-sm-6">
+                    <div class="socials">
+                        <a class="social-item" href="https://www.facebook.com/Wisiviart/" target="_blank"><i
+                                class="ti-facebook"></i></a>
+                        <a class="social-item" href="mailto:wisiviart@gmail.com" target="_blank"><i
+                                class="ti-google"></i></a>
+                        <a class="social-item" href="https://github.com/Wiviart" target="_blank"><i
+                                class="ti-github"></i></a>
+                         <a class="social-item" href="javascript:void(0)" target="_blank"><i class="ti-twitter"></i></a> 
+                        <a class="social-item" href="https://www.linkedin.com/in/dungpham-unity/" target="_blank"><i
+                                class="ti-linkedin"></i></a>
+                        <a class="social-item" href="https://wiviart.itch.io/" target="_blank"><i
+                                class="fab fa-itch-io"></i></a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </footer>
+    <!-- End of page footer -->
+
+    <!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <script src="https://kit.fontawesome.com/a60d92d813.js" crossorigin="anonymous"></script>
+    <!-- bootstrap 3 affix -->
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- steller js -->
+    <script src="assets/js/steller.js"></script>
+
+</body>
+
+</html>

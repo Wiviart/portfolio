@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wiviart | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7f9fc;
+      color: #333;
+    }
+
+    .project-card img {
+      border-radius: 10px;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .project-card img:hover {
+      transform: scale(1.05);
+    }
+
+    .education-img {
+      max-width: 150px;
+      border-radius: 8px;
+    }
+
+    .education-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="40" id="home">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home"><img src="assets/imgs/logo.svg" alt="Logo" height="30"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item">
+            <a class="btn btn-primary ms-3"
+              href="https://drive.google.com/file/d/1FQfJvXO3hYaBcKlG4hIGm6EHlVrPBwCz/view?usp=sharing"
+              target="_blank">Get My CV</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-light text-center py-5 mt-5">
+    <div class="container">
+      <img src="assets/imgs/avatar2.png" alt="Avatar" class="rounded-circle mb-3" width="120">
+      <h1 class="fw-bold">Pham Huu Dung</h1>
+      <p class="lead">A <strong>Game Developer</strong> from Vietnam</p>
+      <div class="d-flex justify-content-center gap-3 mt-3">
+        <a href="https://www.facebook.com/Wisiviart/" target="_blank" class="text-dark"><i
+            class="bi bi-facebook fs-4"></i></a>
+        <a href="mailto:phamhuudung.email@gmail.com" class="text-dark"><i class="bi bi-envelope fs-4"></i></a>
+        <a href="https://github.com/Wiviart" target="_blank" class="text-dark"><i class="bi bi-github fs-4"></i></a>
+        <a href="https://www.linkedin.com/in/dungpham-unity/" target="_blank" class="text-dark"><i
+            class="bi bi-linkedin fs-4"></i></a>
+        <a href="https://wiviart.itch.io/" target="_blank" class="text-dark"><i class="bi bi-controller fs-4"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="container py-5">
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <img src="assets/imgs/avatar.png" alt="Profile" class="img-thumbnail">
+      </div>
+      <div class="col-md-9">
+        <h2>About</h2>
+        <p><strong>Game Developer</strong></p>
+        <p>Driven by a passion for technology and creativity, I chose to pursue a career in game development using
+          Unity. Despite the challenges in this dynamic field, I have embraced the journey with dedication, continuously
+          acquiring new knowledge and honing my skills.</p>
+        <p>With strong logical thinking, a proactive approach to research, and a commitment to self-learning, I excel at
+          developing engaging games and resolving complex issues independently.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="container mt-5 position-relative">
+    <h2 class="text-center mb-4">Projects</h2>
+    <div class="position-relative">
+      <button id="scrollLeftBtn"
+        class="btn btn-outline-secondary position-absolute top-50 start-0 translate-middle-y z-1"><i
+          class="bi bi-chevron-left"></i></button>
+      <div class="overflow-hidden">
+        <div id="projectRow" class="d-flex flex-nowrap gap-4" style="transition: transform 0.5s ease;">
+          <div class="card project-card" style="min-width: 300px;">
+            <img src="https://img.itch.zone/aW1nLzE0MzcyOTMwLnBuZw==/315x250%23c/Szx6uJ.png" class="card-img-top"
+              alt="Project 1">
+            <div class="card-body">
+              <h5 class="card-title">QUINTESSENCE Illuminating Shadow</h5>
+              <a href="https://wiviart.itch.io/quintessence-illuminating-shadow" target="_blank"
+                class="btn btn-sm btn-outline-primary">View Project</a>
+            </div>
+          </div>
+          <div class="card project-card" style="min-width: 300px;">
+            <img src="https://img.itch.zone/aW1nLzEyMzUzNjM5LnBuZw==/315x250%23c/9jm0sA.png" class="card-img-top"
+              alt="Project 2">
+            <div class="card-body">
+              <h5 class="card-title">SLIME Another World Adventure</h5>
+              <a href="https://wiviart.itch.io/slime-another-world-adventure" target="_blank"
+                class="btn btn-sm btn-outline-primary">View Project</a>
+            </div>
+          </div>
+          <div class="card project-card" style="min-width: 300px;">
+            <img src="https://img.itch.zone/aW1nLzEyNTI0MzM4LnBuZw==/315x250%23c/sKxyRi.png" class="card-img-top"
+              alt="Project 3">
+            <div class="card-body">
+              <h5 class="card-title">Lines98</h5>
+              <a href="https://wiviart.itch.io/line-98" target="_blank" class="btn btn-sm btn-outline-primary">View
+                Project</a>
+            </div>
+          </div>
+          <div class="card project-card" style="min-width: 300px;">
+            <img src="https://img.itch.zone/aW1nLzEyNTI0MzM4LnBuZw==/315x250%23c/sKxyRi.png" class="card-img-top"
+              alt="Project 3">
+            <div class="card-body">
+              <h5 class="card-title">Lines98</h5>
+              <a href="https://wiviart.itch.io/line-98" target="_blank" class="btn btn-sm btn-outline-primary">View
+                Project</a>
+            </div>
+          </div>
+          <div class="card project-card" style="min-width: 300px;">
+            <img src="https://img.itch.zone/aW1nLzEyNTI0MzM4LnBuZw==/315x250%23c/sKxyRi.png" class="card-img-top"
+              alt="Project 3">
+            <div class="card-body">
+              <h5 class="card-title">Lines98</h5>
+              <a href="https://wiviart.itch.io/line-98" target="_blank" class="btn btn-sm btn-outline-primary">View
+                Project</a>
+            </div>
+          </div>
+          <div class="card project-card" style="min-width: 300px;">
+            <img src="https://img.itch.zone/aW1nLzEyNTI0MzM4LnBuZw==/315x250%23c/sKxyRi.png" class="card-img-top"
+              alt="Project 3">
+            <div class="card-body">
+              <h5 class="card-title">Lines98</h5>
+              <a href="https://wiviart.itch.io/line-98" target="_blank" class="btn btn-sm btn-outline-primary">View
+                Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="scrollRightBtn"
+        class="btn btn-outline-secondary position-absolute top-50 end-0 translate-middle-y z-1"><i
+          class="bi bi-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const row = document.getElementById("projectRow");
+      const scrollLeftBtn = document.getElementById("scrollLeftBtn");
+      const scrollRightBtn = document.getElementById("scrollRightBtn");
+      const cardWidth = 320; // approximate card width + gap
+
+      if (scrollLeftBtn && scrollRightBtn && row) {
+        scrollLeftBtn.addEventListener("click", function () {
+          row.scrollBy({ left: -cardWidth, behavior: "smooth" });
+        });
+
+        scrollRightBtn.addEventListener("click", function () {
+          row.scrollBy({ left: cardWidth, behavior: "smooth" });
+        });
+
+        let autoScroll = setInterval(() => {
+          row.scrollBy({ left: cardWidth, behavior: "smooth" });
+        }, 5000);
+
+        row.addEventListener("mouseenter", () => clearInterval(autoScroll));
+        row.addEventListener("mouseleave", () => {
+          autoScroll = setInterval(() => {
+            row.scrollBy({ left: cardWidth, behavior: "smooth" });
+          }, 5000);
+        });
+      }
+    });
+  </script>
+
+  <!-- Education & Awards -->
+  <section id="education" class="container mt-5">
+    <h2 class="text-center mb-4">Education & Awards</h2>
+    <div class="education-item">
+      <img src="assets/imgs/certificate1.jpg" alt="Award 1" class="education-img">
+      <div>
+        <h5>Game Development Diploma - FPT Aptech</h5>
+        <p>Graduated with honors. Gained expertise in Unity, C#, team development, and project leadership.</p>
+      </div>
+    </div>
+    <div class="education-item">
+      <img src="assets/imgs/certificate2.jpg" alt="Award 2" class="education-img">
+      <div>
+        <h5>Law Degree - University of Law HCMC</h5>
+        <p>Comprehensive understanding of Vietnamese corporate and IP law, applied in game development practices.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p class="mb-0">&copy; 2025 Pham Huu Dung | <a href="mailto:phamhuudung.email@gmail.com" class="text-white">Contact
+        Me</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
