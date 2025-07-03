@@ -304,10 +304,12 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    const cardWidth = 320;
+
+    // PROJECTS
     const projectRow = document.getElementById("projectRow");
     const projectLeftBtn = document.getElementById("projectScrollLeft");
     const projectRightBtn = document.getElementById("projectScrollRight");
-    const cardWidth = 320;
 
     function scrollProjectRight() {
       if (projectRow.scrollLeft + projectRow.clientWidth >= projectRow.scrollWidth - 1) {
@@ -317,8 +319,16 @@
       }
     }
 
+    function scrollProjectLeft() {
+      if (projectRow.scrollLeft <= 0) {
+        projectRow.scrollTo({ left: projectRow.scrollWidth, behavior: "smooth" });
+      } else {
+        projectRow.scrollBy({ left: -cardWidth, behavior: "smooth" });
+      }
+    }
+
     if (projectRow && projectLeftBtn && projectRightBtn) {
-      projectLeftBtn.onclick = () => projectRow.scrollBy({ left: -cardWidth, behavior: "smooth" });
+      projectLeftBtn.onclick = scrollProjectLeft;
       projectRightBtn.onclick = scrollProjectRight;
 
       let autoScroll = setInterval(scrollProjectRight, 2000);
@@ -328,6 +338,7 @@
       });
     }
 
+    // BLOGS
     const blogRow = document.getElementById("blogRow");
     const blogLeftBtn = document.getElementById("blogScrollLeft");
     const blogRightBtn = document.getElementById("blogScrollRight");
@@ -340,8 +351,16 @@
       }
     }
 
+    function scrollBlogLeft() {
+      if (blogRow.scrollLeft <= 0) {
+        blogRow.scrollTo({ left: blogRow.scrollWidth, behavior: "smooth" });
+      } else {
+        blogRow.scrollBy({ left: -cardWidth, behavior: "smooth" });
+      }
+    }
+
     if (blogRow && blogLeftBtn && blogRightBtn) {
-      blogLeftBtn.onclick = () => blogRow.scrollBy({ left: -cardWidth, behavior: "smooth" });
+      blogLeftBtn.onclick = scrollBlogLeft;
       blogRightBtn.onclick = scrollBlogRight;
 
       let autoBlogScroll = setInterval(scrollBlogRight, 2000);
